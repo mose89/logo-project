@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logo_name: MyString
+  slogan: MyString
+  industry: one
+  color: MyText
+  style: one
+  reference_logo: MyString
+  active: false
+  package: one
+  user: one
+
+two:
+  logo_name: MyString
+  slogan: MyString
+  industry: two
+  color: MyText
+  style: two
+  reference_logo: MyString
+  active: false
+  package: two
+  user: two

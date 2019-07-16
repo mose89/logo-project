@@ -1,7 +1,7 @@
 class CreateIndustries < ActiveRecord::Migration[5.2]
   def change
     create_table :industries do |t|
-      t.string :beskrivelse
+      t.string :description
 
       t.timestamps
     end
