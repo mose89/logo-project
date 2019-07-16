@@ -46,21 +46,15 @@ ActiveRecord::Schema.define(version: 2019_07_16_115630) do
   end
 
   create_table "packages", force: :cascade do |t|
-    t.boolean "logo"
-    t.boolean "web_file"
-    t.boolean "favicon"
-    t.boolean "business_card"
-    t.boolean "black_white_logo"
-    t.boolean "separate_logo_symbol"
-    t.boolean "instagram_logo"
-    t.boolean "facebook_logo"
-    t.boolean "backup"
-    t.integer "amount_logo_proposal"
     t.decimal "price"
-    t.string "amount_change"
-    t.boolean "satisfaction_guarantee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "packages_products", id: false, force: :cascade do |t|
+    t.bigint "package_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["package_id", "product_id"], name: "index_packages_products_on_package_id_and_product_id"
   end
 
   create_table "products", force: :cascade do |t|
