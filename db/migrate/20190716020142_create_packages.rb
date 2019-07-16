@@ -13,6 +13,7 @@ class CreatePackages < ActiveRecord::Migration[5.2]
       t.integer :antall_logo_forslag
       t.decimal :pris
       t.string :antall_endringer
+      t.boolean :fornoyd_garanti
 
       t.timestamps
     end
