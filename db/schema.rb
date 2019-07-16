@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_115630) do
     t.string "phone"
     t.string "business_name"
     t.integer "org_no"
+    t.string "address"
     t.integer "established"
     t.bigint "industry_id"
     t.string "referral"
