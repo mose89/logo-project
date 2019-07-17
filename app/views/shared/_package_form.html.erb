@@ -1,0 +1,15 @@
+<%= form_for @package do |f| %>
+  <%= f.label :pakke_navn %>
+  <%= f.text_field :name %>
+
+  <%= f.label :pris %>
+  <%= f.number_field :price %>
+
+  <% @products.each do |t| %>
+   <%= check_box_tag "package[product_ids][]", t.id, @package.product_ids.include?(t.id)  %>
+   <%= t.name  %>
+   <br />
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
