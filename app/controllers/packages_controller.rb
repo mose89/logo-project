@@ -1,12 +1,12 @@
 class PackagesController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_package, only: [:show, :edit, :update, :destroy]
 
   def new
     @package =Package.new
   end
 
   def create
-    @package = Package.new(product_params)
+    @package = Package.new(package_params)
 
     if @package.save
       redirect_to(@package)
@@ -19,7 +19,7 @@ class PackagesController < ApplicationController
   end
 
   def update
-    if @package.update(product_params)
+    if @package.update(package_params)
       redirect_to(@package)
     else
       render edit
@@ -41,11 +41,11 @@ class PackagesController < ApplicationController
 
   private
 
-  def product_params
+  def package_params
     params.require(:package).permit(:name, :price)
   end
 
-  def set_product
+  def set_package
     @package = Package.find(params[:id])
   end
 end
