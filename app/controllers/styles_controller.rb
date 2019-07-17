@@ -26,13 +26,13 @@ class StylesController < ApplicationController
   def destroy
     @style.destroy
 
-    redirect_to packages_path
+    redirect_to styles_path
   end
 
   private
 
   def style_params
-    params.require(:package).permit(:name, :price)
+    params.require(:style).permit(:name, :price)
   end
 
   def set_style

@@ -30,12 +30,12 @@ class IndustriesController < ApplicationController
   end
 
   def index
-    @industrys = Industry.all
+    @industries = Industry.all
   end
 
   def destroy
     @industry.destroy
-    redirect_to products_path
+    redirect_to industries_path
   end
 
   private
