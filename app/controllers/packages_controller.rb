@@ -12,6 +12,7 @@ class PackagesController < ApplicationController
     prod_ids.each do |prod_id|
       @package.products << Product.find(prod_id.to_i)
     end
+
     if @package.save
       redirect_to(@package)
     else
