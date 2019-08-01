@@ -48,7 +48,7 @@ gem "figaro"
 gem 'cloudinary'
 # Gem for image uploading and for ck_editor
 gem 'carrierwave', "1.3.1"
-gem "mini_magick", ">= 4.9.4"
+gem "mini_magick", "~> 4.9.4"
 gem 'ckeditor'
 
 # Gem for pagination
