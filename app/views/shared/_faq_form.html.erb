@@ -1,0 +1,12 @@
+<%= form_for @faq do |f| %>
+
+  <%= f.label :spørsmål %> <br>
+  <%= f.text_field :question %> <br>
+
+  <%= f.label :svar %> <br>
+  <%= f.text_area :answer %> <br>
+
+<br><br>
+
+  <%= button_tag 'Lagre', class: 'btn btn-primary' %>
+<% end %>

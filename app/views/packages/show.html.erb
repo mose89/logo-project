@@ -1,0 +1,32 @@
+ <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+
+    </div>
+  </header><% product_amount = @package_products.count %>
+<table>
+  <thead>
+    <tr>
+      <th>Pakkenavn</th>
+      <% @package_products.each do |count| %>
+      <th>Produkt</th>
+      <% end %>
+      <th>Pris</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @package.name %></td>
+      <% @package_products.each do |product| %>
+      <td><%= product.name %></td>
+      <% end %>
+      <td><%= @package.price %></td>
+      <td><%= link_to "Endre", edit_package_path(@package) %></td>
+      <td> <%= link_to "Slett", @package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
+<%= link_to "Legg til Ny Pakke" , new_package_path %>

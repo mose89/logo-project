@@ -1,6 +1,10 @@
 class PackagesController < ApplicationController
   before_action :set_package, only: [:show, :edit, :update, :destroy]
-  before_action :set_products, only: [:new, :edit, :update, :destroy]
+  before_action :set_products, only: [:new, :edit, :index, :update, :destroy]
+  before_action :set_services, only: [:new, :edit, :index, :update, :destroy]
+  before_action :set_package_products, only: [:show, :edit, :update, :destroy]
+  before_action :set_package_services, only: [:show, :edit, :update, :destroy]
+
   def new
     @package =Package.new
   end
@@ -8,12 +12,21 @@ class PackagesController < ApplicationController
   def create
     @package = Package.new(package_params)
 
-    prod_ids = params[:package][:Product_ids]
+    prod_ids = params[:package][:product_ids]
     prod_ids.each do |prod_id|
       @package.products << Product.find(prod_id.to_i)
     end
 
-    if @package.save
+    serv_ids = params[:package][:service_ids]
+    if serv_ids.length > 1
+      serv_ids.each do |serv_id|
+        @package.services << Service.find(serv_id.to_i)
+      end
+    else
+      @package.services << Service.find(serv_ids)
+    end
+
+    if @package.save!
       redirect_to(@package)
     else
       render new
@@ -30,6 +43,10 @@ class PackagesController < ApplicationController
       @package.products << Product.find(prod_id.to_i)
     end
 
+    serv_ids = params[:package][:service_ids]
+    serv_ids.each do |serv_id|
+      @package.services << Service.find(serv_id.to_i)
+    end
 
     if @package.update(package_params)
       redirect_to(@package)
@@ -64,4 +81,17 @@ class PackagesController < ApplicationController
   def set_products
     @products = Product.all
   end
+
+  def set_services
+    @services = Service.all
+  end
+
+  def set_package_products
+    @package_products = @package.products
+  end
+
+  def set_package_services
+    @package_services = @package.services
+  end
+
 end

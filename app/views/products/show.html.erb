@@ -1,2 +1,30 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Heading -->
+
+      <h1><%= @product.name %></h1>
+      <h2>Pris: <%= @product.price %>,-</h2><br>
+      <p><b>Produktbeskrivelse</b></p><br>
+      <p><%= @product.description %></p>
+      <div class="row">
+        <div class=col-md-4>
+          <%= link_to "Endre", edit_product_path(@product), class: "btn btn-lg btn-warning" %>
+        </div>
+        <div class=col-md-2>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "Slett", @product, method: :delete, data: {confirm: "Er du sikker? Noen pakker har kanskje dette produktet"}, class: "btn btn-lg btn-danger" %>
+        </div>
+      </div>
+<br><br>
+
+
+      <%= link_to "Legg til Nytt Produkt" , new_product_path, class: "btn btn-lg btn-success" %>
+    </div>
+  </header>
+
+<div class="container">
+
+
+</div>

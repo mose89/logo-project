@@ -1,0 +1,17 @@
+<%= form_for @post do |f| %>
+
+  <%= f.label :Tittel %> <br>
+  <%= f.text_field :title %> <br>
+  <%= f.label :ingress %> <br>
+  <%= f.cktext_area :preface %> <br>
+
+  <%= f.label :innlegg %> <br>
+  <%= f.cktext_area :body %> <br>
+
+  <%= image_tag(@post.thumbnail) if @post.thumbnail? %>
+  <%= f.label :thumbnail %> <br>
+  <%= f.file_field :thumbnail %>
+  <%= f.hidden_field :thumbnail_cache %> <br><br>
+
+  <%= f.submit "Publiser til Bloggen", class: "btn btn-lg btn-success" %>
+<% end %>

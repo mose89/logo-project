@@ -27,10 +27,34 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# ************ Own Gems ************
+
 gem "devise", ">= 4.6.0"
 
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+
+gem "letter_opener", :group => :development
+
+gem 'friendly_id', '~> 5.2.4'
+
+
+# fontawesome
+gem "font-awesome-rails"
+
+# Figaro
+gem "figaro"
+# Cloudinary
+gem 'cloudinary'
+# Gem for image uploading and for ck_editor
+gem 'carrierwave', "1.3.1"
+gem 'mini_magick', '~> 4.8'
+gem 'ckeditor'
+
+# Gem for pagination
+gem 'will_paginate', '~> 3.1.0'
+
+# ************ Own Gems ************
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

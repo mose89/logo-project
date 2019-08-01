@@ -1,2 +1,600 @@
-<h1>Packages#index</h1>
-<p>Find me in app/views/packages/index.html.erb</p>
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+      <%=image_tag "avataaars", class: "masthead-avatar mb-5" %>
+      <img class="masthead-avatar mb-5" src="images/avataaars.svg" alt="">
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Logo Maker'n</h1>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <%= fa_icon "star" %>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Masthead Subheading -->
+      <p class="masthead-subheading font-weight-light mb-0">Grafisk Artist - Web Designer - Illustratør</p> <br>
+      <%= link_to fa_icon("arrow-circle-down"), "/#pakker", style: "font-size: 70px; color:white;" %>
+      <%=  %>
+
+    </div>
+  </header>
+
+
+  <!-- ****************** Pakke section ****************** -->
+ <section class="page-section portfolio" id="pakker" style="background-color: #fff;">
+<div class="container">
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Alle Pakker</h2>
+      <br>
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <%= fa_icon "star" %>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+      <p class="text-center">Vi er stolte av å tilby eksklusive logopakker til landets mest rimelige priser.</p>
+      <br>
+
+      <div class="row">
+  <% @packages.each do |package| %>
+  <div class="col-md-4">
+<table class="table table-primary thead-dark table-borderless text-center">
+  <thead class="thead-dark">
+    <th style="font-size: 30px;"><b> <%= package.name %> </b></th>
+      <tr>
+    <th style="font-size: 30px;"> Totalt: <%= package.price %>,- </th>
+  </tr>
+  </thead>
+
+  <% package.products.each do |product| %>
+  <tr>
+    <td> <%= link_to "#{product.name}", product_path(product) %> </td>
+  </tr>
+  <% end %>
+  <% package.services.each do |service| %>
+  <tr>
+    <td><%= service.name %></td>
+  </tr>
+  <% end %>
+  <tr>
+  <td><%= link_to "Endre", edit_package_path(package) %></td>
+  </tr>
+  <tr>
+  <td> <%= link_to "Slett", package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
+  </tr>
+  <tr class="table-primary">
+    <td class="text-center"> <%= link_to "Bestill", new_order_path, class: "btn btn-success btn-lg" %> </td>
+  </tr>
+
+</table>
+</div>
+
+<br><br>
+<% end %>
+</div>
+<%= link_to "Legg til Ny Pakke" , new_package_path %>
+</div>
+
+ </section>
+
+    <!-- ****************** Prosess seksjon ****************** -->
+
+  <section class="page-section" id="prosess", style="background-color:#F6F7F8">
+
+    <div class="container">
+
+      <!-- Contact Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Vår Prosess</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <%= fa_icon "star" %>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+          <p class="text-center">Motta din logopakke på rekordtid i 3 enkle steg.</p>
+      <br>
+<br><br>
+      <div class="row text-center">
+          <div class="col-md-4">
+            <%= fa_icon "hand-o-up", style: "font-size: 100px;" %>
+            <br><br>
+            <h4>1. Velg Pakke </h4>
+            <p>Velg en av våre <%= Package.all.count %> pakker eller en av våre <%= Product.all.count %> produkter</p>
+          </div>
+          <div class="col-md-4">
+            <%= fa_icon "folder-open", style: "font-size: 100px;" %>
+            <br><br>
+            <h4>2. Motta Utkast </h4>
+            <p>Motta våre forslag iløpet av 24 timer og be om endringer.</p>
+          </div>
+          <div class="col-md-4">
+            <%= fa_icon "gift", style: "font-size: 100px;" %>
+            <br><br>
+            <h4>3. Motta Logopakke</h4>
+            <p>Vi endrer utkastene og sender leverer din endelige bestilling i ulike filformat</p>
+          </div>
+        </p>
+      </div>
+
+
+
+
+      </div>
+      </section>
+
+
+  <!-- About Section -->
+  <section class="page-section bg-primary text-white mb-0" id="hvorfor-velge-oss", style="background-color:#F6F7F8">
+    <div class="container">
+
+      <!-- About Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-white">Hvorfor Velge Logo Maker'n?</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <%= fa_icon "star" %>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- ****************** Hvorfor Velge Oss ****************** -->
+      <div class="row">
+        <div class="col-lg-5 ml-auto">
+          <h3>1. Markedets Beste Priser</h3>
+          <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p>
+        </div>
+
+        <div class="col-lg-1">
+        </div>
+
+        <div class="col-lg-5 mr-auto">
+          <h3>2. Rask Levering</h3>
+          <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
+        </div>
+      </div>
+<br>
+      <div class="row">
+        <div class="col-lg-5 ml-auto">
+          <h3>3. 100% Fornøyd Garanti</h3>
+          <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p>
+        </div>
+
+        <div class="col-lg-1">
+        </div>
+
+        <div class="col-lg-5 mr-auto">
+          <h3>4. Høy Kvalitet</h3>
+          <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
+        </div>
+      </div>
+
+      <!-- About Section Button -->
+      <div class="text-center mt-4">
+        <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/themes/freelancer/">
+          <%= fa_icon "download", style: "font-size: 50px;" %>
+          Last ned vår Logoguide!
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ***************** Galleri Seksjon ***************** -->
+  <section class="page-section portfolio" id="galleri", style="background-color:#F6F7F8">
+    <div class="container">
+
+      <!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Galleri</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <%= fa_icon "star" %>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Portfolio Grid Items -->
+      <div class="row">
+
+        <!-- Portfolio Item 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <%= fa_icon "plus" %>
+              </div>
+            </div>
+            <%= image_tag "portfolio/cabin", class: "img-fluid" %>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <%= fa_icon "plus" %>
+              </div>
+            </div>
+            <%= image_tag "portfolio/cake", class: "img-fluid" %>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <%= fa_icon "plus" %>
+              </div>
+            </div>
+            <%= image_tag "portfolio/circus", class: "img-fluid" %>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <%= fa_icon "plus" %>
+              </div>
+            </div>
+            <%= image_tag "portfolio/game", class: "img-fluid" %>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <%= fa_icon "plus" %>
+              </div>
+            </div>
+            <%= image_tag "portfolio/safe", class: "img-fluid" %>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <%= fa_icon "plus" %>
+              </div>
+            </div>
+            <%= image_tag "portfolio/submarine", class: "img-fluid" %>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+  </section>
+  <!-- *********************** Slutt Galleri Seksjon *********************** -->
+
+
+  <!-- *********************** Kontakt Seksjon *********************** -->
+  <section class="page-section" id="kontakt", style="background-color:#F6F7F8">
+    <div class="container">
+
+      <!-- Contact Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Kontakt Oss</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <%= fa_icon "star" %>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+
+
+      <!-- Contact Section Form -->
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+          <div id="kontakt">
+            <%= form_for :contact_mailer, :url => {action: "create", controller: "contact_mailers"} do |f|%>
+            <div class="control-group">
+              <%= f.text_field :first_name, class: "form-control form-inline", id: "name", placeholder: "Fornavn" %> <br>
+            </div>
+            <div class="control-group">
+              <%= f.text_field :last_name, class: "form-control form-control-inline", id: "name", placeholder: "Etternavn" %><br>
+            </div>
+            </div>
+            <div class="control-group">
+              <%= f.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefon" %><br>
+            </div>
+            <div class="control-group">
+              <%= f.text_field :email, class: "form-control form-inline", id: "name", placeholder: "Epost" %><br>
+            </div>
+            <div class="control-group">
+              <%= f.text_area :message, class: "form-control form-inline", id: "name", placeholder: "Melding", rows: "5" %><br>
+            </div>
+
+              <%= f.submit "Send", class: "btn btn-xl btn-info" %>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Portfolio Modals -->
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <%= fa_icon "times" %>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <%= fa_icon "star" %>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <%= fa_icon "times" %>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 2 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <%= fa_icon "times" %>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <%= fa_icon "star" %>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/cake.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <%= fa_icon "times" %>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 3 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <%= fa_icon "times" %>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <%= fa_icon "star" %>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/circus.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <%= fa_icon "times" %>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 4 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <%= fa_icon "times" %>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <%= fa_icon "star" %>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/game.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <%= fa_icon "times" %>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 5 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <%= fa_icon "times" %>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <%= fa_icon "star" %>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/safe.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <%= fa_icon "times" %>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 6 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <%= fa_icon "times" %>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <%= fa_icon "star" %>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/submarine.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <%= fa_icon "times" %>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>

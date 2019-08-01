@@ -1,0 +1,30 @@
+
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+
+<table class="table table-striped table-success">
+  <thead>
+    <tr>
+      <th style="text-align: center;"><h1>Tjenester</h1></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @services.each do |service| %>
+    <tr>
+      <td><%= service.name %></td>
+      <td><%= link_to "Se tjeneste", service_path(service), class: "btn btn-success btn-lg" %></td>
+      <td><%= link_to "Endre", edit_service_path(service), class: "btn btn-warning btn-lg"%></td>
+      <td><%= link_to "Slett", service, method: :delete, data: {confirm: "Er du sikker på at du vil slette tjenesten? Den vil forsvinne fra alle nåværende og tidligere pakker. Inkludert de som allerede er blitt kjøpt!"}, class: "btn btn-danger btn-lg" %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<br>
+<br>
+      <!-- Masthead Subheading -->
+      <h2 class="masthead-subheading font-weight-light mb-0"> <b> </b> <br></h2>
+
+    </div>
+  </header>
+

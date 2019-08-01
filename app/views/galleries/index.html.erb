@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <% @galleries.each do |gallery| %>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+        <p class="card-img-top"><%= cl_image_tag gallery.photo %></p>
+        <div class="card-title"><h4><%= gallery.header %></h4></div>
+        <div class="card-text"><p><%= gallery.description %></p></div>
+        <%= link_to "Endre", edit_gallery_path(gallery), class: "btn btn-success btn-lg" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<br>
+<br>

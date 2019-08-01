@@ -1,0 +1,42 @@
+<header class="masthead-mose bg-primary text-white text-left">
+  <div class="container d-flex align-items-center flex-column">
+
+    <!-- Masthead Heading -->
+    <h1 class="masthead-heading text-uppercase mb-0">Blog</h1>
+  </div>
+</header>
+
+<br>
+<div class="container d-flex align-items-center flex-column">
+
+
+  <% @posts.each do |post| %>
+    <div class="row">
+
+      <div class="card-group" >
+        <div class="card" style="border-radius: 2px; width: 70rem; padding: 10px; margin: 0px;">
+
+
+              <h2> <%= link_to post.title, post_path(post)%> </h2>
+              <p><%= post.created_at.strftime("%d-%b %Y") %></p>
+              <p> <%= (raw post.preface.truncate(300))%> </p>
+              <%=link_to "Les Mer", post_path(post), class: "btn btn-md btn-primary", style: "width:200px;
+    padding:5px;"  %>
+        </div>
+        <div class="card">
+            <%= cl_image_tag "https://source.unsplash.com/random/300x240" %>
+
+        </div>
+      </div>
+
+    </div>
+
+  <br>
+  <% end %>
+
+<%= will_paginate @posts, :previous_label => 'Forrige', :next_label => 'Neste', class: "digg_pagination" %>
+</div>
+
+<br>
+<br>
+<br>

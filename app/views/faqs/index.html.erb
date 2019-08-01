@@ -1,0 +1,42 @@
+<header class="masthead-mose bg-primary text-white text-left">
+  <div class="container d-flex align-items-center flex-column">
+
+    <!-- Masthead Heading -->
+    <h1 class="masthead-heading text-uppercase mb-0">Ofte Stilte Spørsmål og Svar</h1>
+  </div>
+</header>
+
+<br><br>
+
+<div class="container">
+  <h4>Alle Spørsmål</h4>
+  <br>
+  <% num_q = 0 %>
+  <% @faqs.each do |faq| %>
+    <% num_q += 1 %>
+    <%= link_to "#{num_q}. #{faq.question}", "#q#{num_q}" %>
+  <% end %>
+
+<% num_q2 = 0 %>
+  <% @faqs.each do |faq| %>
+    <% num_q2 += 1 %>
+    <hr id=<%="q#{num_q2}"%> >
+    <h2> <%= "#{num_q2}. #{faq.question}" %> </h2>
+    <p> <%= faq.answer %> </p>
+    <%= link_to "Neste Spørsmål", "faq/#q#{num_q2+1}"  %> <br>
+    <%= link_to "Forrige Spørsmål", "faq/#q#{num_q2-1}"  %>
+  <% end %>
+</div>
+
+<br>
+<br>
+<br>
+
+<%= form_tag import_faqs_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "import csv" %>
+<% end %>
+
+<br>
+<br>
+<br>

@@ -1,0 +1,15 @@
+<%= form_for [:post, @comment] do |f| %>
+  <%= f.label :navn %> <br>
+  <%= f.text_field :name %> <br>
+  <%= f.label :epost %> <br>
+  <%= f.text_field :email %> <br>
+  <%= f.label :Overskrift %> <br>
+  <%= f.text_field :title %> <br>
+  <%= f.label :Kommentar %> <br>
+  <%= f.text_area :body %> <br>
+  <%= f.label :navn %>
+
+<br><br>
+
+  <%= f.submit "Lagre Kommentar", class: "btn btn-lg btn-success" %>
+<% end %>

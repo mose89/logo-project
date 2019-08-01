@@ -33,6 +33,11 @@ class IndustriesController < ApplicationController
     @industries = Industry.all
   end
 
+  def import
+    Industry.import(params[:file])
+    redirect_to new
+  end
+
   def destroy
     @industry.destroy
     redirect_to industries_path

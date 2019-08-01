@@ -1,0 +1,6 @@
+
+  <%= form_for @service do |f| %>
+    <%= f.label :tjeneste_navn %> <br>
+    <%= f.text_field :name %> <br><br>
+    <%= f.submit "Lagre Tjeneste", class: "btn btn-lg btn-success" %>
+  <% end %>

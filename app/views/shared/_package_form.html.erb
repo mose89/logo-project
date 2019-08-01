@@ -1,15 +1,66 @@
+
+<% num_products = @products.count %>
+<% num_services = @services.count %>
+
 <%= form_for @package do |f| %>
-  <%= f.label :pakke_navn %>
-  <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-4">
+    <h3> <%= f.label :pakke_navn %></h3>
+  </div>
 
-  <%= f.label :pris %>
-  <%= f.number_field :price %>
+  <div class="col-md-2"></div>
 
+  <div class="col-md-4">
+    <h3> <%= f.label :pris %> </h3>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-4">
+      <%= f.text_field :name %>
+  </div>
+
+  <div class="col-md-2"></div>
+
+  <div class="col-md-4">
+    <%= f.number_field :price %>
+  </div>
+</div>
+  <br>
+
+<h3>Legg til pakkens proukter</h3>
+<div class="row">
   <% @products.each do |t| %>
-   <%= check_box_tag "package[product_ids][]", t.id, @package.product_ids.include?(t.id)  %>
-   <%= t.name  %>
-   <br />
-  <% end %>
 
-  <%= f.submit %>
-<% end %>
+    <div class=<%="col-md-#{12/num_products}"%>>
+    <%= check_box_tag "package[product_ids][]", t.id, @package.product_ids.include?(t.id)  %>
+    <br>
+   <%= t.name  %>
+    </div>
+
+   <br />
+
+  <% end %>
+  <br><br><br>
+</div>
+
+<h3>Legg til Pakkens Tjenester</h3>
+
+<div class="row">
+  <% @services.each do |t| %>
+    <div class=<%="col-md-#{12/num_services}"%>>
+      <%= check_box_tag "package[service_ids][]", t.id, @package.service_ids.include?(t.id)  %>
+    <br>
+      <%= t.name  %>
+    </div>
+  <% end %>
+</div>
+
+<br><br>
+
+<div class="row">
+    <%= f.submit "Lag Pakke", class: "btn btn-success btn-lg btn-primary"%>
+  <% end %>
+</div>

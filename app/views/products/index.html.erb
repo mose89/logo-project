@@ -1,2 +1,41 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<header class="masthead-mose bg-primary text-white text-left">
+  <div class="container d-flex align-items-center flex-column">
+
+    <!-- Masthead Heading -->
+    <h1 class="masthead-heading text-uppercase mb-0">Våre Produkter</h1>
+  </div>
+</header>
+
+<div class="container">
+  <br>
+  <div class="row" >
+    <% @products.each do |product| %>
+    <div class="col-md-4">
+
+      <div class="card">
+        <%= image_tag "https://source.unsplash.com/random/300x240" %>
+
+        <div class="card-body" style="text-align: center;">
+          <h4 class="card-title"><%= product.name.capitalize %></h4>
+          <p class="card-text">
+           <%= product.description %> </p>
+          <p class="card-text"> <%= product.price %> NOK </p>
+          <p class="card-text"> <%= link_to "Detaljer", product, class: "btn btn-primary btn-lg" %> </p>
+          <p class="card-text"><%= link_to "Endre", edit_product_path(product), class: "btn btn-warning btn-lg" %> </p>
+          <p class="card-text">
+            <%= link_to "Slett", product, method: :delete, data: {confirm: "Er du sikker? Noen pakker har kanskje dette produktet"}, class: "btn btn-lg btn-danger" %>
+          </p>
+        </div>
+
+      </div>
+<br>
+
+    </div>
+
+    <% end %>
+  </div>
+  <br>
+  <br>
+  <br>
+  <%= link_to "Legg til Nytt Produkt" , new_product_path, style: "text-align: center;" %>
+</div>

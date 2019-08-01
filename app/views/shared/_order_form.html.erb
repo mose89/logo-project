@@ -1,0 +1,160 @@
+
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+
+  <%= form_for @order do |f| %>
+
+    <div class="row">
+      <div class="col-md-12">
+      <div class="field">
+        <%= f.label :velg_logo_pakke %>
+        <%= f.select :package_id, (Package.all.collect{ |p| [p.name, p.id]}), {prompt: "Velg Pakke"}, {class: "form-control form-inline"} %>
+      </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= f.label :logo_navn %>
+          <%= f.text_field :logo_name, class: "form-control form-inline", id: "name", placeholder: "Logo Navn" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <%= f.label :slagord %>
+          <%= f.text_field :slogan, class: "form-control form-inline", id: "name", placeholder: "Slagord" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= f.label :Industri %>
+          <%= f.select :industry_id, (Industry.all.collect { |i| [i.description, i.id]}), {prompt: "Velg  bransje"}, {class: "form-control form-inline"}%>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <%= f.label :farge %>
+          <%= f.text_field :color, class: "form-control form-inline", id: "name", placeholder: "Velg maximum 2 farger" %>
+        </div>
+      </div>
+    </div>
+
+
+<br>
+
+
+  <%= f.label :stil %>
+  <%= f.select :style_id, (Style.all.collect{ |s| [s.name, s.id]}), {prompt: "Velg logo stil"}, {class: "form-control form-inline"} %>
+
+  <%= f.label "Last opp logostiler du " %>
+  <%= f.file_field :reference_logo, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
+
+
+
+
+
+  <% @products.each do |product| %>
+   <label>
+      <%= check_box_tag "order[product_ids][]", product.id, @order.products.include?(product.id) %>
+      <%= product.name %>
+   </label>
+  <% end %>
+   <br />
+
+  <%= f.fields_for :company_detail do |builder| %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :fornavn %>
+          <%= builder.text_field :first_name, class: "form-control form-inline", id: "name", placeholder: "Fornavn" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :etternavn %>
+          <%= builder.text_field :last_name, class: "form-control form-inline", id: "name", placeholder: "Etternavn" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+      <%= builder.label :telefon %>
+      <%= builder.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefon Nummer" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+      <%= builder.label :epost %>
+      <%= builder.text_field :email, class: "form-control form-inline", id: "name", placeholder: "Epost" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :selskapsnavn %>
+          <%= builder.text_field :business_name, class: "form-control form-inline", id: "name", placeholder: "Selskapsnavn(Valgfritt)" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :org_nummer %>
+          <%= builder.text_field :org_no, class: "form-control form-inline", id: "name", placeholder: "Organisasjonsnummer(Valgfritt)" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :adresse %>
+          <%= builder.text_field :address, class: "form-control form-inline", id: "name", placeholder: "Adresse" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :postnummer %>
+          <%= builder.text_field :zip_code, class: "form-control form-inline", id: "name", placeholder: "Postnummer" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :etableringsår %>
+          <%= builder.text_field :established, class: "form-control form-inline", id: "name", placeholder: "Etableringsår" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <%= builder.label :hvordan_fikk_du_først_høre_om_oss? %>
+          <%= builder.text_field :referral, class: "form-control form-inline", id: "name", placeholder: "Google, Facebook, Twitter" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+  <br>
+
+  <%= f.submit "Bestill", data: {confirm: "Dette er en endelig bestilling. Tast \"OK\" for å gå videre med bestillingen?"}, class: "btn btn-success btn-xl" %>
+  <% end %>
+
+  <br>
+  <br>
+  <br>
+
+  </div>
+</div>
+
+
+
