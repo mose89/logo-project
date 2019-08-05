@@ -1,0 +1,25 @@
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <%= render "shared/admin_nav" %>
+  </div>
+    <div class="table">
+    <div class="thead">
+      <div class="row">
+        <div class="th">Question</div>
+        <div class="th">Answer</div>
+      </div>
+    </div>
+
+    <div class="body">
+      <% @faqs.each do |faq| %>
+      <div class="row">
+        <div class="td"><%= faq.question %></div>
+        <div class="td"><%= faq.answer %></div>
+        <div class="td"> <%= link_to "Endre", edit_faq_path(faq) %> </div>
+      </div>
+      <% end %>
+    </div>
+</body>

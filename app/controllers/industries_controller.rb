@@ -3,10 +3,12 @@ class IndustriesController < ApplicationController
 
   def new
     @industry =Industry.new
+    authorize @industry
   end
 
   def create
     @industry = Industry.new(industry_params)
+    authorize @service
 
     if @industry.save
       redirect_to(@industry)
@@ -30,7 +32,7 @@ class IndustriesController < ApplicationController
   end
 
   def index
-    @industries = Industry.all
+    @industries = policy_scope(Industry)
   end
 
   def import
@@ -51,5 +53,6 @@ class IndustriesController < ApplicationController
 
   def set_industry
     @industry = Industry.find(params[:id])
+    authorize @industry
   end
 end

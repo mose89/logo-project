@@ -4,11 +4,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def create
     @post = Post.new(post_params)
-
+    authorize @post
     if @post.save
       redirect_to(@post)
     else
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 3)
+    @posts = policy_scope(Post).paginate(page: params[:page], per_page: 3)
   end
 
   def destroy
@@ -47,6 +48,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.friendly.find(params[:id])
+    authorize @post
   end
 
   def set_comments

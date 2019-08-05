@@ -1,6 +1,23 @@
 <%= form_for @style do |f| %>
-  <%= f.label :stil_type %>
-  <%= f.text_field :type %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="field">
+      <%= f.label :stil_type %> <br>
+      <%= f.text_field :type %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="field">
+      <%= f.label "Last Opp Stil" %> <br>
+      <%= f.file_field :image, class: "form-control form-inline", placeholder: "image" %> <br><br>
+      <%= f.hidden_field :image_cache, class: "form-control form-inline", placeholder: "image" %>
+    </div>
+  </div>
+</div>
 
   <%= f.submit "Lagre"%>
 <% end %>

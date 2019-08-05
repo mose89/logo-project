@@ -1,13 +1,14 @@
 class StylesController < ApplicationController
-  before_action :set_style, only: [:show, :destroy]
+  before_action :set_style, only: [:show, :edit, :update :destroy]
 
   def new
     @style =Style.new
+    authorize @style
   end
 
   def create
     @style = Style.new(style_params)
-
+    authorize @style
     if @style.save
       redirect_to(@style)
     else
@@ -20,7 +21,7 @@ class StylesController < ApplicationController
   end
 
   def index
-    @styles = Style.all
+    @styles = policy_scope(Style)
   end
 
   def destroy
@@ -32,10 +33,11 @@ class StylesController < ApplicationController
   private
 
   def style_params
-    params.require(:style).permit(:name, :price)
+    params.require(:style).permit(:name, :price, :image, :image_cache)
   end
 
   def set_style
     @style = Style.find(params[:id])
+    authorize @style
   end
 end

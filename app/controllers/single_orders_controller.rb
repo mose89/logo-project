@@ -4,11 +4,15 @@ class SingleOrdersController < ApplicationController
 
   def new
     @single_order = SingleOrder.new
+    authorize @single_order
     @single_order.build_company_detail
   end
 
   def create
     @single_order = SingleOrder.new(single_order_params)
+    authorize @single_order
+    @single_order.active = true
+    @single_order.total = @single_order.product.price
     if @single_order.save!
       OrderMailer.produkt_bestilling(@single_order).deliver_now
       redirect_to @single_order
@@ -24,7 +28,7 @@ class SingleOrdersController < ApplicationController
   end
 
   def index
-    @single_orders = SingleOrder.all
+    @single_orders = policy_scope(SingleOrder)
   end
 
   private
@@ -35,5 +39,6 @@ class SingleOrdersController < ApplicationController
 
   def find_single_order
     @single_order = SingleOrder.find(params[:id])
+    authorize @single_order
   end
 end

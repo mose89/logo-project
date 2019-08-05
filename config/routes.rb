@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :tasks, except:[:show, :index]
+
+  get 'admins/dashboard'
+  get 'admins/package'
+  get 'admins/order'
+  get 'admins/style'
+  get 'admins/industry'
+  get 'admins/faq'
+  get 'admins/gallery'
+  get 'admins/product'
+  get "admins/post"
+  get "admins/company_detail"
+  get "admins/task/:id", to: "admins#task", as: "admins_task"
+
   get '/faq', to: 'faqs#index', as: 'faqs'
   get "om-oss", to: "faqs#about", as: "om_oss"
   resources :faqs, except: :index do

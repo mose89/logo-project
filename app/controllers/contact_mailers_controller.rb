@@ -1,12 +1,14 @@
 class ContactMailersController < ApplicationController
-  before_action :set_contact_mailer, only: [:takk, :show, :edit]
+  before_action :set_contact_mailer, only: [:takk, :show, :edit, :update]
 
   def new
     @contact_mailer = ContactMailer.new
+    authorize @contact_mailer
   end
 
   def create
     @contact_mailer = ContactMailer.new(contact_mailer_params)
+    authorize @contact_mailer
 
     if @contact_mailer.save!
       KontaktMailer.with(contact_mailer = @contact_mailer).kontakt_epost.deliver_now
@@ -23,7 +25,7 @@ class ContactMailersController < ApplicationController
   end
 
   def index
-    @contact_mailers = ContactMailer.all
+    @contact_mailers = policy_scope(ContactMailer)
   end
 
   def takk
@@ -36,6 +38,7 @@ class ContactMailersController < ApplicationController
 
   def set_contact_mailer
     @contact_mailer = ContactMailer.find(params[:id])
+    authorize @contact_mailer
   end
 
 end

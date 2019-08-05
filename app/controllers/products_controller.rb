@@ -4,10 +4,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(product_params)
+    authorize @product
 
     if @product.save
       redirect_to(@product)
@@ -31,7 +33,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = policy_scope(Product)
   end
 
   def destroy
@@ -47,5 +49,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.friendly.find(params[:id])
+    authorize @product
   end
 end

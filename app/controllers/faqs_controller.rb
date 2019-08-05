@@ -7,6 +7,7 @@ class FaqsController < ApplicationController
   end
   def new
     @faq = Faq.new
+    authorize @faq
   end
 
   def create
@@ -25,7 +26,7 @@ class FaqsController < ApplicationController
   end
 
   def index
-    @faqs = Faq.all
+    @faqs = policy_scope(Faq)
   end
 
   def about
@@ -38,6 +39,7 @@ class FaqsController < ApplicationController
 
   def find_faq
     @faq = Faq.find(params[:id])
+    authorize @faq
   end
 
 end

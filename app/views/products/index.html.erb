@@ -21,9 +21,11 @@
            <%= product.description %> </p>
           <p class="card-text"> <%= product.price %> NOK </p>
           <p class="card-text"> <%= link_to "Detaljer", product, class: "btn btn-primary btn-lg" %> </p>
-          <p class="card-text"><%= link_to "Endre", edit_product_path(product), class: "btn btn-warning btn-lg" %> </p>
-          <p class="card-text">
-            <%= link_to "Slett", product, method: :delete, data: {confirm: "Er du sikker? Noen pakker har kanskje dette produktet"}, class: "btn btn-lg btn-danger" %>
+          <% if current_user && current_user.admin? %>
+            <p class="card-text"><%= link_to "Endre", edit_product_path(product), class: "btn btn-warning btn-lg" %> </p>
+            <p class="card-text">
+              <%= link_to "Slett", product, method: :delete, data: {confirm: "Er du sikker? Noen pakker har kanskje dette produktet"}, class: "btn btn-lg btn-danger" %>
+          <% end %>
           </p>
         </div>
 
@@ -37,5 +39,7 @@
   <br>
   <br>
   <br>
-  <%= link_to "Legg til Nytt Produkt" , new_product_path, style: "text-align: center;" %>
+  <% if current_user && current_user.admin? %>
+  <%= link_to "Legg til Nytt Produkt" , new_product_path, style: "text-align: center;", class: "btn btn-xl btn-success" %>
+  <% end %>
 </div>

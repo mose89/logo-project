@@ -30,6 +30,9 @@
   <!-- ****************** Pakke section ****************** -->
  <section class="page-section portfolio" id="pakker" style="background-color: #fff;">
 <div class="container">
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Legg til Ny Pakke" , new_package_path, class: "btn btn-xl btn-primary" %>
+  <% end %>
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Alle Pakker</h2>
       <br>
       <!-- Icon Divider -->
@@ -64,12 +67,14 @@
     <td><%= service.name %></td>
   </tr>
   <% end %>
+  <% if current_user && current_user.admin? %>
   <tr>
-  <td><%= link_to "Endre", edit_package_path(package) %></td>
+    <td><%= link_to "Endre", edit_package_path(package) %></td>
   </tr>
   <tr>
-  <td> <%= link_to "Slett", package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
+    <td> <%= link_to "Slett", package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
   </tr>
+  <% end %>
   <tr class="table-primary">
     <td class="text-center"> <%= link_to "Bestill", new_order_path, class: "btn btn-success btn-lg" %> </td>
   </tr>
@@ -80,7 +85,7 @@
 <br><br>
 <% end %>
 </div>
-<%= link_to "Legg til Ny Pakke" , new_package_path %>
+
 </div>
 
  </section>
@@ -195,6 +200,9 @@
   <!-- ***************** Galleri Seksjon ***************** -->
   <section class="page-section portfolio" id="galleri", style="background-color:#F6F7F8">
     <div class="container">
+      <% if current_user && current_user.admin? %>
+      <%= link_to "Endre Galleri", galleries_path, class: "btn btn-xl btn-primary" %>
+      <% end %>
 
       <!-- Portfolio Section Heading -->
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Galleri</h2>

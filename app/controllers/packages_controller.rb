@@ -7,10 +7,12 @@ class PackagesController < ApplicationController
 
   def new
     @package =Package.new
+    authorize @package
   end
 
   def create
     @package = Package.new(package_params)
+    authorize @package
 
     prod_ids = params[:package][:product_ids]
     prod_ids.each do |prod_id|
@@ -37,7 +39,6 @@ class PackagesController < ApplicationController
   end
 
   def update
-
     prod_ids = params[:package][:product_ids]
     prod_ids.each do |prod_id|
       @package.products << Product.find(prod_id.to_i)
@@ -59,7 +60,7 @@ class PackagesController < ApplicationController
   end
 
   def index
-    @packages = Package.all
+    @packages = policy_scope(Package)
   end
 
   def destroy
@@ -76,6 +77,7 @@ class PackagesController < ApplicationController
 
   def set_package
     @package = Package.find(params[:id])
+    authorize @package
   end
 
   def set_products

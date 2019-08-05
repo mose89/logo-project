@@ -2,6 +2,9 @@
 <p>Find me in app/views/posts/show.html.erb</p>
 
 <div class="container" style="text-align: center;" >
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Endre Post", edit_post_path(@post) %>
+  <% end %>
   <h1><%= @post.title %></h1>
   <br>
   <p><%= cl_image_tag @post.thumbnail %></p>

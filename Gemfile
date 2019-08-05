@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # ************ Own Gems ************
+# gem "google-api-client"
+
+gem "chartkick"
+gem 'groupdate'
 
 gem "devise", ">= 4.6.0"
 
@@ -53,6 +57,9 @@ gem 'ckeditor'
 
 # Gem for pagination
 gem 'will_paginate', '~> 3.1.0'
+
+# Gem for Pundit
+gem "pundit"
 
 # ************ Own Gems ************
 

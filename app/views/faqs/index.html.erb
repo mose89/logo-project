@@ -32,11 +32,13 @@
 <br>
 <br>
 
-<%= form_tag import_faqs_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "import csv" %>
-<% end %>
+<% if current_user && current_user.admin? %>
 
+  <%= form_tag import_faqs_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "import csv" %>
+  <% end %>
+<% end %>
 <br>
 <br>
 <br>

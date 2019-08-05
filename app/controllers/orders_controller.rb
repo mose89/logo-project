@@ -4,12 +4,15 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    authorize @order
     @order.build_company_detail
   end
 
   def create
     @order = Order.new(order_params)
+    authorize @order
     @order.active = true
+    @order.total = @order.package.price
     if @order.save!
       OrderMailer.bestilling_bekreftelse(@order).deliver_now
       redirect_to order_path(@order)
@@ -33,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = policy_scope(Order)
   end
 
   def destroy
@@ -50,6 +53,7 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
+    authorize @order
   end
 
   def set_products

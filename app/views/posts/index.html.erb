@@ -3,6 +3,9 @@
 
     <!-- Masthead Heading -->
     <h1 class="masthead-heading text-uppercase mb-0">Blog</h1>
+     <% if current_user && current_user.admin? %>
+      <%= link_to "Ny Blog Post", new_post_path, class: "btn btn-xl btn-primary" %>
+    <% end %>
   </div>
 </header>
 

@@ -2,34 +2,22 @@
 <p>Find me in app/views/orders/show.html.erb</p>
 
 <% count = 1 %>
-<% if @order.products != nil%>
-<% extra_products = @order.products  %>
+
 <table>
   <thead>
     <tr>
       <th>Pakkenavn</th>
+      <th><%= "#{@order.company_detail.first_name} #{@order.company_detail.last_name}" %></th>
       <th> <%= @order.package.name %> </th>
+      <th><%= @order.package.price %></th>
     </tr>
-
-    <% @order.products.each do |product| %>
-    <tr>
-      <th>
-        <%= "Tilleggsprodukt #{count}" %>
-      </th>
-      <th>
-        <%= product.name %>
-      </th>
-    </tr>
-    <% count += 1 %>
-    <% end %>
   </thead>
   <tbody>
+    <tr>
       <td><%= link_to "Endre", edit_package_path(@order.package) %></td>
       <td> <%= link_to "Slett", @order.package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
     </tr>
   </tbody>
 </table>
-<% else %>
-<h3>Thank you</h3>
-<% end %>
+
 <br><br>

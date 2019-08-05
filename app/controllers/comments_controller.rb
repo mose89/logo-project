@@ -4,10 +4,12 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    authorize @comment
   end
 
   def create
     @comment = @post.comments.new(comment_params)
+    authorize @comment
 
     if @comment.save!
       redirect_to(@post)
@@ -31,7 +33,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
+    @comments = policy_scope(Comment)
   end
 
   def destroy
@@ -47,6 +49,7 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+    authorize @comment
   end
 
   def set_post

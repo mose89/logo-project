@@ -3,10 +3,12 @@ class CompanyDetailsController < ApplicationController
 
   def new
     @company_detail = CompanyDetail.new
+    authorize @company_detail
   end
 
   def create
     @company_detail = CompanyDetail.new(order_params)
+    authorize @company_detail
     @company_detail.order_id = @order.id
 
     if @company_detail.save
@@ -30,7 +32,7 @@ class CompanyDetailsController < ApplicationController
   end
 
   def index
-    @company_details = CompanyDetail.all
+    @company_details = policy_scope(CompanyDetail)
   end
 
   def destroy
@@ -47,6 +49,7 @@ class CompanyDetailsController < ApplicationController
 
   def set_company_detail
     @company_detail = CompanyDetail.find(params[:id])
+    authorize @company_detail
   end
 
   def set_products

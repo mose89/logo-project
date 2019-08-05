@@ -1,0 +1,22 @@
+<%= form_for @task do |f| %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="field">
+      <%= f.label :oppgave %> <br>
+      <%= f.text_field :description %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="field">
+      <%= f.label "Frist" %> <br>
+      <%= f.date_field :deadline %> <br><br>
+    </div>
+  </div>
+</div>
+
+  <%= f.submit "Lagre"%>
+<% end %>

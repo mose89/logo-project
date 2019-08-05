@@ -3,11 +3,12 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
+    authorize @service
   end
 
   def create
     @service = Service.new(service_params)
-
+    authorize @service
     if @service.save
       redirect_to(@service)
     else
@@ -19,7 +20,7 @@ class ServicesController < ApplicationController
   end
 
   def update
-    if @service.update(service_params)
+    if @service.update_params(service_params)
       redirect_to(@service)
     else
       render edit
@@ -30,7 +31,7 @@ class ServicesController < ApplicationController
   end
 
   def index
-    @services = Service.all
+    @services = policy_scope(Service)
   end
 
   def destroy
@@ -46,5 +47,6 @@ class ServicesController < ApplicationController
 
   def set_service
     @service = Service.find(params[:id])
+    authorize @service
   end
 end

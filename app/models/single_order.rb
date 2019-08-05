@@ -4,4 +4,21 @@ class SingleOrder < ApplicationRecord
   accepts_nested_attributes_for :company_detail
 
   mount_uploader :design, SingleOrderUploader
+
+
+  def self.active_orders
+    x = SingleOrder.where(active: true)
+    x
+  end
+
+  def self.sales_this_year
+    x = Order.where(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_day).sum(:total)
+    return x
+  end
+
+  def self.sales_this_month
+    x = Order.where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_day).sum(:total)
+    return x
+  end
+
 end
