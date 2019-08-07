@@ -12,6 +12,7 @@ class FaqsController < ApplicationController
 
   def create
     @faq = Faq.new(faq_params)
+    authorize @faq
     if @faq.save!
       redirect_to faqs_path
     else

@@ -47,10 +47,12 @@
 <br>
 
 
-  <%= f.label :stil %>
-  <%= f.select :style_id, (Style.all.collect{ |s| [s.name, s.id]}), {prompt: "Velg logo stil"}, {class: "form-control form-inline"} %>
+  <%= f.collection_radio_buttons(:style_id, Style.all, :id, :image) do |s| %>
+    <%= s.label { s.radio_button + cl_image_tag(s.object.image) } %>
+  <% end %>
 
-  <%= f.label "Last opp logostiler du " %>
+<br>
+  <%= f.label "Last opp en logostil du liker " %>
   <%= f.file_field :reference_logo, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
 
 

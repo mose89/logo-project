@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-  has_and_belongs_to_many :packages
+  has_many :package_products
+  has_many :packages, :through => :package_products
   has_and_belongs_to_many :orders
   mount_uploader :photo, ProductImageUploader
 

@@ -1,0 +1,29 @@
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <%= @greeting %>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span ></span>
+                <img class="img-profile rounded-circle " src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <%= link_to "Profil", edit_user_registration_path, class: "dropdown-item" %>
+
+                <div class="dropdown-divider"></div>
+                  <%= link_to "Logg Ut", destroy_user_session_path, method: :delete, data: {confirm: "Trykk \"Ok\" for å logge ut."}, class: "dropdown-item"%>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>

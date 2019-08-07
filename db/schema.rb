@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 2019_08_04_224023) do
     t.string "referral"
     t.boolean "gender"
     t.bigint "order_id"
+    t.bigint "single_order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "single_order_id"
     t.index ["order_id"], name: "index_company_details_on_order_id"
     t.index ["single_order_id"], name: "index_company_details_on_single_order_id"
   end
@@ -119,15 +119,32 @@ ActiveRecord::Schema.define(version: 2019_08_04_224023) do
     t.boolean "active"
     t.string "style_id"
     t.string "package_id"
+    t.integer "total"
+    t.string "package_name"
+    t.text "product_array"
+    t.text "service_array"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "total"
   end
 
   create_table "orders_products", id: false, force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
     t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
+  end
+
+  create_table "package_products", force: :cascade do |t|
+    t.bigint "package_id"
+    t.bigint "product_id"
+    t.index ["package_id"], name: "index_package_products_on_package_id"
+    t.index ["product_id"], name: "index_package_products_on_product_id"
+  end
+
+  create_table "package_services", force: :cascade do |t|
+    t.bigint "package_id"
+    t.bigint "service_id"
+    t.index ["package_id"], name: "index_package_services_on_package_id"
+    t.index ["service_id"], name: "index_package_services_on_service_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -137,27 +154,15 @@ ActiveRecord::Schema.define(version: 2019_08_04_224023) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "packages_products", id: false, force: :cascade do |t|
-    t.bigint "package_id", null: false
-    t.bigint "product_id", null: false
-    t.index ["package_id", "product_id"], name: "index_packages_products_on_package_id_and_product_id"
-  end
-
-  create_table "packages_services", id: false, force: :cascade do |t|
-    t.bigint "package_id", null: false
-    t.bigint "service_id", null: false
-    t.index ["package_id", "service_id"], name: "index_packages_services_on_package_id_and_service_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "preface"
     t.text "body"
+    t.string "thumbnail"
     t.string "slug"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "thumbnail"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -165,10 +170,10 @@ ActiveRecord::Schema.define(version: 2019_08_04_224023) do
     t.string "name"
     t.text "description"
     t.decimal "price"
+    t.string "photo"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
   end
 
   create_table "services", force: :cascade do |t|
@@ -179,19 +184,19 @@ ActiveRecord::Schema.define(version: 2019_08_04_224023) do
 
   create_table "single_orders", force: :cascade do |t|
     t.string "design"
+    t.integer "total"
+    t.boolean "active"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active"
-    t.integer "total"
     t.index ["product_id"], name: "index_single_orders_on_product_id"
   end
 
   create_table "styles", force: :cascade do |t|
     t.string "name"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -227,6 +232,10 @@ ActiveRecord::Schema.define(version: 2019_08_04_224023) do
   add_foreign_key "comments", "posts"
   add_foreign_key "company_details", "orders"
   add_foreign_key "company_details", "single_orders"
+  add_foreign_key "package_products", "packages"
+  add_foreign_key "package_products", "products"
+  add_foreign_key "package_services", "packages"
+  add_foreign_key "package_services", "services"
   add_foreign_key "posts", "users"
   add_foreign_key "single_orders", "products"
   add_foreign_key "tasks", "users"

@@ -8,5 +8,6 @@ class AddDetailsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :address, :string
     add_column :users, :established, :integer
     add_column :users, :referral, :string
+    add_column :users, :admin, :boolean
   end
 end

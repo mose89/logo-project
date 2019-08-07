@@ -9,6 +9,10 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.boolean :active
       t.string :style_id
       t.string :package_id
+      t.integer :total
+      t.string :package_name
+      t.text :product_array
+      t.text :service_array
 
       t.timestamps
     end

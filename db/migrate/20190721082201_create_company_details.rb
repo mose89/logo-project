@@ -13,6 +13,7 @@ class CreateCompanyDetails < ActiveRecord::Migration[5.2]
       t.string :referral
       t.boolean :gender
       t.references :order, foreign_key: true
+      t.references :single_order, foreign_key: true
 
       t.timestamps
     end

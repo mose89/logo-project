@@ -12,10 +12,17 @@
   <h4>Alle Spørsmål</h4>
   <br>
   <% num_q = 0 %>
+<table>
   <% @faqs.each do |faq| %>
     <% num_q += 1 %>
+    <tr>
+    <td>
     <%= link_to "#{num_q}. #{faq.question}", "#q#{num_q}" %>
+    </td>
+    </tr>
   <% end %>
+</table>
+
 
 <% num_q2 = 0 %>
   <% @faqs.each do |faq| %>
@@ -23,8 +30,8 @@
     <hr id=<%="q#{num_q2}"%> >
     <h2> <%= "#{num_q2}. #{faq.question}" %> </h2>
     <p> <%= faq.answer %> </p>
-    <%= link_to "Neste Spørsmål", "faq/#q#{num_q2+1}"  %> <br>
-    <%= link_to "Forrige Spørsmål", "faq/#q#{num_q2-1}"  %>
+    <%= link_to "Neste Spørsmål", "faqs/#q#{num_q2+1}"  %> <br>
+    <%= link_to "Forrige Spørsmål", "faqs/#q#{num_q2-1}"  %>
   <% end %>
 </div>
 
@@ -34,6 +41,8 @@
 
 <% if current_user && current_user.admin? %>
 
+<%= link_to "Ny Q&A", new_faq_path, class: "btn btn-md btn-success" %>
+<br><br>
   <%= form_tag import_faqs_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "import csv" %>

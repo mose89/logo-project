@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :preface
       t.text :body
+      t.string :thumbnail
       t.string :slug
       t.references :user, foreign_key: true
 

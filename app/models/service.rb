@@ -1,3 +1,4 @@
 class Service < ApplicationRecord
-  has_and_belongs_to_many :packages
+  has_many :package_services
+  has_many :packages, :through => :package_services
 end

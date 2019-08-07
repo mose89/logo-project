@@ -3,8 +3,8 @@
 <div class="row">
   <div class="col-md-12">
     <div class="field">
-      <%= f.label :stil_type %> <br>
-      <%= f.text_field :type %>
+      <%= f.label :stil_navn %> <br>
+      <%= f.text_field :name %>
     </div>
   </div>
 </div>
@@ -19,5 +19,5 @@
   </div>
 </div>
 
-  <%= f.submit "Lagre"%>
+  <%= f.submit "Lagre", class: "btn btn-success btn-lg" %>
 <% end %>

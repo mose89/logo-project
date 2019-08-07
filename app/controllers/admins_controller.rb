@@ -78,13 +78,14 @@ class AdminsController < ApplicationController
 
   def set_agg
     @income_this_year = Order.sales_this_year + SingleOrder.sales_this_year
+    @income_this_month = Order.sales_this_month + SingleOrder.sales_this_month
     @active_orders = Order.active_orders
     @active_single_orders = SingleOrder.active_orders
     @all_active_orders = Order.active_orders.count + SingleOrder.active_orders.count
     @all_active_order_instances = Order.active_orders.count + SingleOrder.active_orders.count
     @sales_revenue_by_item = Product.product_revenue_hash.merge(Package.package_revenue_hash)
     @user = current_user
-    @my_tasks = Task.where("user_id = ?", current_user.id)
+    @my_tasks = Task.where(user: current_user.id)
     @my_task_count = @my_tasks.count
     @all_task_count = Task.all.count
   end

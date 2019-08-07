@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
     authorize @order
     @order.active = true
     @order.total = @order.package.price
+    @order.product_array = @order.order_prod_arr
+    @order.service_array = @order.order_serv_arr
+    @order.package_name = @order.package.name
     if @order.save!
       OrderMailer.bestilling_bekreftelse(@order).deliver_now
       redirect_to order_path(@order)
@@ -25,8 +28,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params)
-      redirect_to(@order)
+    if @order.update_attributes(order_params)
+      redirect_to admins_order_path
     else
       render edit
     end
@@ -42,13 +45,17 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
 
-    redirect_to orders_path
+    redirect_to admins_order_path
+  end
+
+  def takk
+    authorize :order, :takk?
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:logo_name, :slogan, :industry_id, :color, :style_id, :reference_logo, :package_id, product_ids:[ ], company_detail_attributes:[:first_name, :last_name, :phone, :email, :business_name, :org_no, :address, :zip_code, :referral, :established])
+    params.require(:order).permit(:logo_name, :slogan, :industry_id, :color, :style_id, :reference_logo, :package_id, :active, product_ids:[ ], company_detail_attributes:[:first_name, :last_name, :phone, :email, :business_name, :org_no, :address, :zip_code, :referral, :established])
   end
 
   def set_order

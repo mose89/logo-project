@@ -48,6 +48,10 @@
           <span><%= link_to "Produkter", admins_product_path, class: "nav-link collapsed" %></span>
       </li>
 
+      <li class="nav-item">
+          <span><%= link_to "FAQ", admins_faq_path, class: "nav-link collapsed" %></span>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -78,7 +82,7 @@
       <hr class="sidebar-divider d-none d-md-block">
 
       <li class="nav-item">
-        <span><%= link_to "Logg Ut", destroy_user_session_path, method: :delete, class: "nav-link btn btn-lg btn-danger" %></span>
+        <span><%= link_to "Logg Ut", destroy_user_session_path, method: :delete, data: {confirm: "Trykk \"Ok\" for å logge ut."}, class: "nav-link btn btn-lg btn-danger" %></span>
       </li>
 
     </ul>

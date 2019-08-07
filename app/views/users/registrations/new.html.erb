@@ -1,29 +1,47 @@
-<h2>Sign up</h2>
+ <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+
+<h2>Registrering</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :fornavn %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "fornavn" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :etternavn %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "etternavn" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :epost %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :passord %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Minimum <%= @minimum_password_length %> karakterer)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :passord_bekreftelse %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  </div> <br>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrer", class: "btn btn-lg btn-success" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+
+    </div>
+  </header>
+

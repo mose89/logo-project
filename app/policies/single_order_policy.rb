@@ -24,4 +24,8 @@ class SingleOrderPolicy < ApplicationPolicy
   def destroy?
     is_admin?
   end
+
+  def takk
+    true
+  end
 end

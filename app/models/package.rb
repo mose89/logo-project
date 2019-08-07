@@ -1,6 +1,8 @@
 class Package < ApplicationRecord
-  has_and_belongs_to_many :products
-  has_and_belongs_to_many :services
+  has_many :package_products, :dependent => :destroy
+  has_many :package_services, :dependent => :destroy
+  has_many :products, :through => :package_products
+  has_many :services, :through => :package_services
 
   def self.package_sales_hash
     package_hash = Hash.new

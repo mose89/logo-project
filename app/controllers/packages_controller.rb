@@ -39,17 +39,9 @@ class PackagesController < ApplicationController
   end
 
   def update
-    prod_ids = params[:package][:product_ids]
-    prod_ids.each do |prod_id|
-      @package.products << Product.find(prod_id.to_i)
-    end
-
-    serv_ids = params[:package][:service_ids]
-    serv_ids.each do |serv_id|
-      @package.services << Service.find(serv_id.to_i)
-    end
-
-    if @package.update(package_params)
+    params[:package][:product_ids] ||=[]
+    params[:package][:service_ids] ||=[]
+    if @package.update_attributes(edit_package_params)
       redirect_to(@package)
     else
       render edit
@@ -70,6 +62,10 @@ class PackagesController < ApplicationController
   end
 
   private
+
+  def edit_package_params
+    params.require(:package).permit!
+  end
 
   def package_params
     params.require(:package).permit(:name, :price)

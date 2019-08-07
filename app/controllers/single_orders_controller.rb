@@ -15,7 +15,7 @@ class SingleOrdersController < ApplicationController
     @single_order.total = @single_order.product.price
     if @single_order.save!
       OrderMailer.produkt_bestilling(@single_order).deliver_now
-      redirect_to @single_order
+      redirect_to single_orders_takk_path
     else
       render new
     end
@@ -27,14 +27,26 @@ class SingleOrdersController < ApplicationController
   def edit
   end
 
+  def update
+    if @single_order.update_attributes(single_order_params)
+      redirect_to admins_order_path
+    else
+      render edit
+    end
+  end
+
   def index
     @single_orders = policy_scope(SingleOrder)
+  end
+
+  def takk
+    authorize :single_order, :takk
   end
 
   private
 
   def single_order_params
-    params.require(:single_order).permit(:product_id, :design, :design_cache, company_detail_attributes:[:first_name, :last_name, :phone, :email, :business_name, :org_no, :address, :zip_code, :referral, :established])
+    params.require(:single_order).permit(:product_id, :design, :design_cache, :active, company_detail_attributes:[:first_name, :last_name, :phone, :email, :business_name, :org_no, :address, :zip_code, :referral, :established])
   end
 
   def find_single_order

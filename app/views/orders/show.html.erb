@@ -1,23 +1,49 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
-
-<% count = 1 %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Pakkenavn</th>
-      <th><%= "#{@order.company_detail.first_name} #{@order.company_detail.last_name}" %></th>
-      <th> <%= @order.package.name %> </th>
-      <th><%= @order.package.price %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= link_to "Endre", edit_package_path(@order.package) %></td>
-      <td> <%= link_to "Slett", @order.package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
-    </tr>
-  </tbody>
-</table>
+<% products = @order.product_array %>
+<% services = @order.service_array %>
+ <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+<!-- Kunde navn, selskap, pakke, produkter, pris -->
+<h2>Ordre Detaljer</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Selskap</th>
+            <th>Org. Nummer</th>
+            <th>Navn</th>
+            <th>Pakke</th>
+            <th>Pris</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @order.id %></td>
+            <td><%= @order.company_detail.business_name %></td>
+            <td><%= @order.company_detail.org_no %></td>
+            <td><%= "#{@order.company_detail.first_name} #{@order.company_detail.last_name}" %></td>
+            <td><%= @order.package_name %></td>
+            <td><%= @order.total %> NOK</td>
+          </tr>
+        </tbody>
+      </table>
 
 <br><br>
+<h2>Produkter og Tjenester Inkludert</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Produkter og Tjenester</th>
+            <% products.each do |product| %>
+            <td><%= product %></td>
+            <% end %>
+            <% services.each do |service| %>
+            <td><%= service %></td>
+            <% end %>
+          </tr>
+        </thead>
+      </table>
+
+<h2>Foretrukket Stil</h2>
+<%= cl_image_tag @order.style.image %>
+    </div>
+  </header>

@@ -29,11 +29,12 @@ gem 'jbuilder', '~> 2.5'
 
 # ************ Own Gems ************
 # gem "google-api-client"
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
-gem "chartkick"
+gem "chartkick", "~> 3.2.0"
 gem 'groupdate'
 
-gem "devise", ">= 4.6.0"
+gem "devise", "~> 4.6.0"
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'

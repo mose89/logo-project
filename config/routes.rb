@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   get "admins/company_detail"
   get "admins/task/:id", to: "admins#task", as: "admins_task"
 
-  get '/faq', to: 'faqs#index', as: 'faqs'
+  get "takk-for-din-bestilling", to: "orders#takk", as: "order_takk"
+  get "tusen-takk-for-din-bestilling", to: "single_orders#takk", as: "single_orders_takk"
+
   get "om-oss", to: "faqs#about", as: "om_oss"
-  resources :faqs, except: :index do
+  resources :faqs do
     collection {post :import}
   end
   mount Ckeditor::Engine => '/ckeditor'
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
   resources :industries
   resources :orders
   resources :products
+
   resources :single_orders
   resources :packages
 
@@ -40,7 +43,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :galleries, only: [:new, :create, :edit, :update, :index]
+  resources :galleries, except: [:show, :index]
 
   devise_for :users
   root 'packages#index'
