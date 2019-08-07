@@ -38,27 +38,28 @@
       <div class="col-md-6">
         <div class="field">
           <%= f.label :farge %>
-          <%= f.text_field :color, class: "form-control form-inline", id: "name", placeholder: "Velg maximum 2 farger" %>
+          <%= f.text_field :color, class: "form-control form-inline", id: "name", placeholder: "Velg maksimalt 2 farger" %>
         </div>
       </div>
     </div>
 
-
-<br>
-
-
-  <%= f.collection_radio_buttons(:style_id, Style.all, :id, :image) do |s| %>
-    <%= s.label { s.radio_button + cl_image_tag(s.object.image) } %>
-  <% end %>
-
-<br>
-  <%= f.label "Last opp en logostil du liker " %>
-  <%= f.file_field :reference_logo, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
+    <br>
+    <%= f.label "Last opp en logostil du liker " %>
+    <%= f.file_field :reference_logo, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
 
 
+    <br>
+
+    <h4>Velg logostilen du liker best</h4> <p>(Tips: Tenk på Hvilken følelse du vil at din målgruppe skal sitte igjen med)</p>
+      <%= f.collection_radio_buttons(:style_id, Style.all, :id, :image) do |s| %>
+        <%= s.label { s.radio_button + cl_image_tag(s.object.image) } %>
+      <% end %>
 
 
 
+<br><br>
+
+<h4>Velg et ekstraprodukt(Frivillig)</h4>
   <% @products.each do |product| %>
    <label>
       <%= check_box_tag "order[product_ids][]", product.id, @order.products.include?(product.id) %>
@@ -67,6 +68,7 @@
   <% end %>
    <br />
 
+<br>
   <%= f.fields_for :company_detail do |builder| %>
 
     <div class="row">
@@ -88,7 +90,7 @@
       <div class="col-md-6">
         <div class="field">
       <%= builder.label :telefon %>
-      <%= builder.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefon Nummer" %>
+      <%= builder.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefonnummer" %>
         </div>
       </div>
       <div class="col-md-6">
@@ -119,7 +121,7 @@
       <div class="col-md-6">
         <div class="field">
           <%= builder.label :adresse %>
-          <%= builder.text_field :address, class: "form-control form-inline", id: "name", placeholder: "Adresse" %>
+          <%= builder.text_field :address, class: "form-control form-inline", id: "name", placeholder: "Faktureringsadresse" %>
         </div>
       </div>
       <div class="col-md-6">
