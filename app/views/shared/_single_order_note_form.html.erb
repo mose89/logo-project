@@ -1,0 +1,13 @@
+
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+
+    <h1>Lag/Endre Notat</h1>
+    <%= form_for [@single_order, @note] do |f| %>
+      <%= f.label :notat %> <br>
+      <%= f.text_area :description %> <br><br>
+      <%= f.submit "Lagre Notat", class: "btn btn-lg btn-success" %>
+    <% end %>
+
+  </div>
+</div>

@@ -36,6 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @notes = @order.order_notes
   end
 
   def index

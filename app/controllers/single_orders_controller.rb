@@ -1,5 +1,4 @@
 class SingleOrdersController < ApplicationController
-
   before_action :find_single_order, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -22,6 +21,7 @@ class SingleOrdersController < ApplicationController
   end
 
   def show
+    @notes = @single_order.single_order_notes
   end
 
   def edit

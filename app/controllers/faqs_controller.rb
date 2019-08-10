@@ -1,5 +1,5 @@
 class FaqsController < ApplicationController
-  before_action :find_faq, only: [:show, :edit]
+  before_action :find_faq, only: [:show, :edit, :update, :destroy]
 
   def import
     Faq.import(params[:file])
@@ -26,8 +26,21 @@ class FaqsController < ApplicationController
   def edit
   end
 
+  def update
+    if @faq.update_attributes(faq_params)
+      redirect_to admins_faq_path
+    else
+      render edit
+    end
+  end
+
   def index
     @faqs = policy_scope(Faq)
+  end
+
+  def destroy
+    @faq.destroy
+    redirect_to admins_faq_path
   end
 
   def about

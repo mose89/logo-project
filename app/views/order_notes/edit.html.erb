@@ -1,0 +1,21 @@
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex  flex-column">
+
+
+
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+
+    <h1>Endre Notat</h1>
+    <%= form_for [@order, @note], controller: :order_notes, action: :update do |f| %>
+      <%= f.label :notat %> <br>
+      <%= f.text_area :description %> <br><br>
+      <%= f.submit "Lagre Notat", class: "btn btn-lg btn-success" %>
+    <% end %>
+
+  </div>
+</div>
+
+
+  </div>
+</header>

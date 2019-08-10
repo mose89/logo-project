@@ -1,2 +1,64 @@
-<h1>SingleOrders#show</h1>
-<p>Find me in app/views/single_orders/show.html.erb</p>
+ <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+<!-- Kunde navn, selskap, pakke, produkter, pris -->
+<h2>Ordre Detaljer</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Selskap</th>
+            <th>Org. Nummer</th>
+            <th>Navn</th>
+            <th>Pakke</th>
+            <th>Pris</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @single_order.id %></td>
+            <td><%= @single_order.company_detail.business_name %></td>
+            <td><%= @single_order.company_detail.org_no %></td>
+            <td><%= "#{@single_order.company_detail.first_name} #{@single_order.company_detail.last_name}" %></td>
+            <td><%= @single_order.product.name %></td>
+            <td><%= @single_order.total %> NOK</td>
+            <td><%= @single_order.product.description %></td>
+          </tr>
+        </tbody>
+      </table>
+
+<br><br>
+<!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-12 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Bestillingsnotater ---- <%= link_to "Nytt Notat", new_single_order_single_order_note_path(@single_order), class: "btn btn-primary btn-sm" %></h6>
+                </div>
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Notat</th>
+                        <th>Notat Dato</th>
+                        <th>Laget av</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @notes.each do |note| %>
+                      <tr>
+                        <td><%= note.description %></td>
+                        <td><%= note.created_at %></td>
+                        <td><%= note.user.first_name %></td>
+                        <td><%= link_to "Endre", edit_single_order_single_order_note_path(@single_order,note), class: "btn btn-warning btn-sm"%></td>
+                        <td><div style="font-size: 30px; color-profile: green;"> <%= link_to (fa_icon "check-square"), [@single_order, note], method: :delete, data: {confirm: "Er du sikker på at du vil fjerne notatet for godt?"} %></div></td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </header>

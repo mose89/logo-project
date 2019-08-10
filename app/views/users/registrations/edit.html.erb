@@ -1,7 +1,7 @@
 
 
 
-<header class="masthead-mose bg-primary text-white text-left">
+<header class="masthead-mose bg-primary text-white text-center">
   <div class="container d-flex align-items-center flex-column">
 
     <!-- Masthead Heading -->
@@ -20,22 +20,18 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :passord %> <i>(La feltet stå blankt med mindre du vil endre det.)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em>Minimum <%= @minimum_password_length %> karakterer </em>
-    <% end %>
+  <div class="field"><br>
+    <%= f.label :nytt_passord %> <br />
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Minimum #{@minimum_password_length} karakterer"  %>
   </div>
 
-  <div class="field">
+  <div class="field"><br>
     <%= f.label :passord_bekreftelse %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :nåværende_passord %> <i>(Vi trenger ditt nåværende passord for å bekrefte dine endringer)</i><br />
+  <div class="field"><br>
+    <%= f.label :nåværende_passord %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 <br>
@@ -43,7 +39,7 @@
     <%= f.submit "Oppdater", class: "bt btn-lg btn-success" %>
   </div>
 <% end %>
-
+<br><br>
 <h3>Kanseller min konto</h3>
 
 <p>Missfornøyd? <%= button_to "Kanseller min konto", registration_path(resource_name), data: { confirm: "Er du sikker? Dette vil slette alt du har gjort og lagret fra databasen for godt." }, method: :delete, class: "btn btn-danger btn-lg" %></p>

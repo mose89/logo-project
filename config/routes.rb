@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :single_order_notes, except: [:show, :index]
+
+
   resources :tasks, except:[:show, :index]
 
   get 'admins/dashboard'
@@ -33,10 +36,14 @@ Rails.application.routes.draw do
   end
 
   resources :industries
-  resources :orders
+  resources :orders do
+    resources :order_notes, except: [:show, :index]
+  end
   resources :products
 
-  resources :single_orders
+  resources :single_orders do
+    resources :single_order_notes, except: [:show, :index]
+  end
   resources :packages
 
   resources :posts do

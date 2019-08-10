@@ -1,0 +1,2 @@
+module SingleOrderNotesHelper
+end

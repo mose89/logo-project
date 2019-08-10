@@ -99,15 +99,15 @@ class AdminsController < ApplicationController
     four_am = Time.now.change(:hour => 4).to_i
 
     if midnight.upto(four_am).include?(current_time)
-      @greeting = ("Good Natt, #{@user.first_name}!")
+      @greeting = ("God Natt, #{@user.first_name}!")
     elsif four_am.upto(noon).include?(current_time)
-      @greeting = ("Good Morgen, #{@user.first_name}!")
+      @greeting = ("God Morgen, #{@user.first_name}!")
     elsif noon.upto(five_pm).include?(current_time)
-      @greeting =  "Good Ettermiddag, #{@user.first_name}!"
+      @greeting =  "God Ettermiddag, #{@user.first_name}!"
     elsif five_pm.upto(eight_pm).include?(current_time)
-      @greeting = "Good Kveld, #{@user.first_name}!"
+      @greeting = "God Kveld, #{@user.first_name}!"
     elsif eight_pm.upto(midnight + 1.day).include?(current_time)
-      @greeting = "Good Kveld, #{@user.first_name}!"
+      @greeting = "God Kveld, #{@user.first_name}!"
     end
     @greeting
   end
