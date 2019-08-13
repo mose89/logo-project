@@ -53,6 +53,7 @@ class PackagesController < ApplicationController
 
   def index
     @packages = policy_scope(Package)
+    @galleries = Gallery.all
   end
 
   def destroy

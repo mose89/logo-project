@@ -1,4 +1,14 @@
 class Order < ApplicationRecord
+
+  validates :logo_name, presence: true
+  validates :slogan, presence: true
+  validates :industry, presence: true
+  validates :color, presence: true
+  validates :style, presence: true
+  validates :package, presence: true
+
+
+
   serialize :product_array
   serialize :service_array
   belongs_to :industry

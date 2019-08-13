@@ -4,15 +4,26 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    Følgende melding ble sendt <% Time.now %>
-    <p>Hei <%= @fornavn %></p>
+    <p>Hei <%= @fornavn %>,</p>
     <p>
-      Takk for å ha kontaktet oss på <%= link_to "Logo Makern", "/" %> .<br>
-      Du vil få svar innen 24 timer.
+      Takk for din bestilling på Logmakern.no!
+      <br><br>
+      Følgende ordredetaljer er blitt registrert:
+
+    <ul>
+      <li><b>Produkt:</b> <%= @produkt %></li>
+      <li><b>Pris:</b> <%= @pris %> NOK</li>
+    </ul>
+
+    <p>Dere vil motta designet deres i løpet av de neste 2-3 dagene.</p>
+    <p>Faktura vil bli sendt ut fortløpende.</p>
+    <p>Skulle dere ha noen spørsmål så er det bare å svare tilbake på denne eposten så kommer vi tilbake til dere så snart vi kan.</p>
+    <p>Vi ser frem til å jobbe med dere og vil gjøre vårt ypperste for å designe et mesterverk som vil gjøre dere fornøyde.</p>
+
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Med vennlig hilsen,<br>
+      Logo Maker'n Support Team
     </p>
-    <p>Thanks for joining and have a great day!</p>
   </body>
 </html>

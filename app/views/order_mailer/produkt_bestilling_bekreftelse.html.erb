@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    Følgende bestilling ble gjort <%= Time.now %>
+
+    <h2>Ordredetaljer</h2>
+    <ul>
+      <li><b>Produkt:</b> <%= @produkt %></li>
+      <li><b>Pris:</b> <%= @pris %> NOK</li>
+    </ul>
+
+    <br>
+
+    <h2>Kundedetaljer</h2>
+    <ul>
+      <li><b>ID:</b> <%= @id %> </li>
+      <li><b>Navn:</b> <%= @fullt_navn %> </li>
+      <li><b>Epost:</b> <%= @epost %> </li>
+      <li><b>Telefon:</b> <%= @telefon %> </li>
+      <li><b>Adresse:</b> <%= @adresse %> </li>
+      <li><b>Postnummer:</b> <%= @postnummer %> </li>
+    </ul>
+
+    </p>
+    <p>
+      Med vennlig hilsen,<br>
+      Logo Maker'n Support Team
+    </p>
+  </body>
+</html>

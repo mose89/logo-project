@@ -1,4 +1,8 @@
 class Faq < ApplicationRecord
+  validates :question, presence: true
+  validates :answer, presence: true
+
+
   require "csv"
 
   def self.import(file)

@@ -4,15 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    Følgende melding ble sendt <% Time.now %>
     <p>Hei <%= @first_name %></p>
     <p>
       Takk for å ha kontaktet oss på <%= link_to "Logo Makern", "/" %> .<br>
-      Du vil få svar innen 24 timer.
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Vi vil svare deg så snart vi kan i løpet av de neste 24 timene.
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>
+      Med vennlig hilsen,<br>
+      Logo Maker'n Support Team
+    </p>
   </body>
 </html>

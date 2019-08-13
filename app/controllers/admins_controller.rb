@@ -85,7 +85,7 @@ class AdminsController < ApplicationController
     @all_active_order_instances = Order.active_orders.count + SingleOrder.active_orders.count
     @sales_revenue_by_item = Product.product_revenue_hash.merge(Package.package_revenue_hash)
     @user = current_user
-    @my_tasks = Task.where(user: current_user.id)
+    @my_tasks = Task.where(user: current_user)
     @my_task_count = @my_tasks.count
     @all_task_count = Task.all.count
   end

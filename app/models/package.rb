@@ -1,4 +1,9 @@
 class Package < ApplicationRecord
+
+  validates :name, presence: true
+  validates :price, presence: true
+
+
   has_many :package_products, :dependent => :destroy
   has_many :package_services, :dependent => :destroy
   has_many :products, :through => :package_products

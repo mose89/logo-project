@@ -14,6 +14,7 @@ class SingleOrdersController < ApplicationController
     @single_order.total = @single_order.product.price
     if @single_order.save!
       OrderMailer.produkt_bestilling(@single_order).deliver_now
+      OrderMailer.produkt_bestilling_bekreftelse(@single_order).deliver_now
       redirect_to single_orders_takk_path
     else
       render new

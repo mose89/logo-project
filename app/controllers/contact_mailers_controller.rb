@@ -11,7 +11,7 @@ class ContactMailersController < ApplicationController
     authorize @contact_mailer
 
     if @contact_mailer.save!
-      KontaktMailer.with(contact_mailer = @contact_mailer).kontakt_epost.deliver_now
+      KontaktMailer.kontakt_epost(@contact_mailer).deliver_now
       redirect_to ny_takk_contact_mailer_path(@contact_mailer)
     else
       render new

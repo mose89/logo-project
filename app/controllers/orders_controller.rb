@@ -18,7 +18,8 @@ class OrdersController < ApplicationController
     @order.package_name = @order.package.name
     if @order.save!
       OrderMailer.bestilling_bekreftelse(@order).deliver_now
-      redirect_to order_path(@order)
+      OrderMailer.pakke_bestilling_bekreftelse(@order).deliver_now
+      redirect_to order_takk_path
     else
       render new_order_path
     end
