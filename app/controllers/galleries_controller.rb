@@ -10,9 +10,9 @@ before_action :find_gallery, only: [:show, :edit, :update, :destroy]
     @gallery = Gallery.new(gallery_params)
     authorize @gallery
     if @gallery.save!
-      redirect_to galleries_path
+      redirect_to admins_gallery_path
     else
-      render "index"
+      render index
     end
   end
 
@@ -20,6 +20,11 @@ before_action :find_gallery, only: [:show, :edit, :update, :destroy]
   end
 
   def update
+    if @gallery.update_attributes(gallery_params)
+      redirect_to admins_gallery_path
+    else
+      render edit
+    end
   end
 
   def index

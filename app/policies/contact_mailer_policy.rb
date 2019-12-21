@@ -24,4 +24,8 @@ class ContactMailerPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def takk?
+    true
+  end
 end

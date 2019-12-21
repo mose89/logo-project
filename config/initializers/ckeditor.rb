@@ -26,7 +26,9 @@ Ckeditor.setup do |config|
   # Setup authorization to be run as a before filter
   # By default: there is no authorization.
   # config.authorize_with :cancancan
-
+  Ckeditor.setup do |config|
+    config.authorize_with :pundit
+  end
   # Override parent controller CKEditor inherits from
   # By default: 'ApplicationController'
   # config.parent_controller = 'MyController'

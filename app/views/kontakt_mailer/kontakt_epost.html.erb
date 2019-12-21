@@ -6,11 +6,15 @@
   <body>
     <p>Hei <%= @first_name %></p>
     <p>
-      Takk for å ha kontaktet oss på <%= link_to "Logo Makern", "/" %> .<br>
+      Deres henvendelse på <%= link_to "Logo Makern", root_url %> er mottatt.<br>
     </p>
     <p>
-      Vi vil svare deg så snart vi kan i løpet av de neste 24 timene.
+      Vi vil svare dere så snart vi kan. Vanlig prosesseringstid er maksimalt 24 timer.
     </p>
+    <p>
+      Skulle dere ha noen andre spørsmål så er det bare å svare tilbake på denne eposten så kommer vi tilbake til dere så snart vi kan. Dere kan også lese svar på de vanligste spørsmålene vi mottar ved å klikke <%= link_to "her", faqs_url %>.
+    </p>
+
     <p>
       Med vennlig hilsen,<br>
       Logo Maker'n Support Team

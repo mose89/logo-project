@@ -4,5 +4,5 @@ class Gallery < ApplicationRecord
   validates :photo, presence: true
 
 
-  mount_uploader :photo, ProductImageUploader
+  mount_uploader :photo, GalleryPhotoUploader
 end

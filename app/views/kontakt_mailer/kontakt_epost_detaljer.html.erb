@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Følgende melding ble sendt <%= Time.now %>  </p>
+    <ul>
+      <li> <b>Fornavn: </b> <%= @fornavn.capitalize %></li>
+      <li> <b>Etternavn: </b><%= @etternavn.capitalize %></li>
+      <li> <b>Telefon: </b><%= @telefon %></li>
+      <li> <b>Epost: </b><%= @epost %></li>
+    </ul>
+    <p>Melding:</p>
+
+    <hr>
+    <p><%= @melding %></p>
+    <hr>
+
+    <p>
+      Med vennlig hilsen,<br>
+      Din Magiske Kollega i Logo Maker'n
+    </p>
+  </body>
+</html>

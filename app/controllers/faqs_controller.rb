@@ -2,6 +2,7 @@ class FaqsController < ApplicationController
   before_action :find_faq, only: [:show, :edit, :update, :destroy]
 
   def import
+    authorize :faq, :import?
     Faq.import(params[:file])
     redirect_to faqs_path
   end

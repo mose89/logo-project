@@ -8,7 +8,7 @@
       <div class="col-md-12">
       <div class="field">
         <%= f.label :velg_logo_pakke %>
-        <%= f.select :package_id, (Package.all.collect{ |p| [p.name, p.id]}), {prompt: "Velg Pakke"}, {class: "form-control form-inline"} %>
+        <%= f.select :package_id, (Package.all.collect{ |p| ["#{p.name} #{p.price} NOK", p.id]}), {prompt: "Velg Pakke"}, {class: "form-control form-inline"} %>
       </div>
     </div>
     </div>
@@ -32,19 +32,19 @@
       <div class="col-md-6">
         <div class="field">
           <%= f.label :Industri %>
-          <%= f.select :industry_id, (Industry.all.collect { |i| [i.description, i.id]}), {prompt: "Velg  bransje"}, {class: "form-control form-inline"}%>
+          <%= f.select :industry_id, (Industry.all.collect { |i| [i.description, i.id]}), {prompt: "Velg bransje"}, {class: "form-control form-inline"}%>
         </div>
       </div>
       <div class="col-md-6">
         <div class="field">
           <%= f.label :farge %>
-          <%= f.text_field :color, class: "form-control form-inline", id: "name", placeholder: "Velg maksimalt 2 farger" %>
+          <%= f.text_field :color, class: "form-control form-inline", id: "name", placeholder: "Velg maksimalt 2 farger/fargekoder" %>
         </div>
       </div>
     </div>
 
     <br>
-    <%= f.label "Last opp en logostil du liker " %>
+    <%= f.label "Last opp en logostil du liker (Frivillig)" %>
     <%= f.file_field :reference_logo, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
 
 

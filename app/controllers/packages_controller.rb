@@ -29,7 +29,7 @@ class PackagesController < ApplicationController
     end
 
     if @package.save!
-      redirect_to(@package)
+      redirect_to root_path
     else
       render new
     end

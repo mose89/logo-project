@@ -42,23 +42,25 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Overskrift</th>
-                          <th>Tekst</th>
-                          <th>Bilde</th>
-                        </tr>
-                      </thead>
                       <tbody>
-                        <% @faqs.each do |faq| %>
+
                         <tr>
                           <td><%= gallery.header %></td>
+                        </tr>
+                        <tr>
                           <td><%= gallery.description %></td>
-                          <td><%= cl_image_tag gallery.photo %></td>
+                        </tr>
+                        <tr>
+                          <td><%= cl_image_tag gallery.photo, :height => 200, :width => 300 %></td>
+                        </tr>
+                        <tr>
                           <td><%= link_to "Endre", edit_gallery_path(gallery), class: "btn btn-warning btn-md" %></td>
-                          <td><%= link_to "Slett", gallery, method: :delete, data:{confirm: "Er du sikker på at du vil slette galleriet?"}, class: "btn btn-danger btn-md" %></td>
-                          </tr>
-                        <% end %>
+                        </tr>
+                        <tr>
+                          <td><%= link_to "Slett", gallery, method: :delete, data:{confirm: "Er du sikker på at du vil slette galleriet?"}, class: "btn btn-danger btn-md" %>
+                          </td>
+                        </tr>
+
                       </tbody>
                     </table>
 

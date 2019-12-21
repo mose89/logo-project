@@ -3,7 +3,7 @@
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
-      <%=image_tag "avataaars", class: "masthead-avatar mb-5" %>
+      <%image_tag "avataaars", class: "masthead-avatar mb-5" %>
 
       <!-- Masthead Heading -->
       <h1 class="masthead-heading text-uppercase mb-0">Logo Maker'n</h1>
@@ -11,9 +11,9 @@
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <%= fa_icon "star" %>
-        </div>
+          <div class="divider-custom-icon">
+            <%= fa_icon "star" %>
+          </div>
         <div class="divider-custom-line"></div>
       </div>
 
@@ -28,64 +28,63 @@
 
   <!-- ****************** Pakke section ****************** -->
  <section class="page-section portfolio" id="pakker" style="background-color: #fff;">
-<div class="container">
-  <% if current_user && current_user.admin? %>
-    <%= link_to "Legg til Ny Pakke" , new_package_path, class: "btn btn-xl btn-primary" %>
-  <% end %>
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Alle Pakker</h2>
-      <br>
-      <!-- Icon Divider -->
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
+  <div class="container">
+    <% if current_user && current_user.admin? %>
+      <%= link_to "Legg til Ny Pakke" , new_package_path, class: "btn btn-xl btn-primary" %>
+    <% end %>
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Alle Pakker</h2>
+    <br>
+    <!-- Icon Divider -->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
           <%= fa_icon "star" %>
         </div>
-        <div class="divider-custom-line"></div>
+      <div class="divider-custom-line"></div>
+    </div>
+    <p class="text-center">Vi er stolte av å tilby eksklusive logopakker til landets mest rimelige priser.</p>
+    <br>
+
+    <div class="row">
+      <% @packages.each do |package| %>
+      <div class="col-md-4">
+        <table class="table table-primary thead-dark table-borderless text-center" style="height:100%;">
+          <thead class="thead-dark">
+            <th style="font-size: 30px;"><b> <%= package.name %> </b></th>
+            <tr>
+              <th style="font-size: 30px;"> Totalt: <%= package.price %>,- </th>
+            </tr>
+          </thead>
+
+          <% package.products.each do |product| %>
+          <tr>
+            <td> <%= link_to "#{product.name}", product_path(product) %> </td>
+          </tr>
+          <% end %>
+          <% package.services.each do |service| %>
+          <tr>
+            <td><%= service.name %></td>
+          </tr>
+          <% end %>
+          <% if current_user && current_user.admin? %>
+          <tr>
+            <td><%= link_to "Endre", edit_package_path(package) %></td>
+          </tr>
+          <tr>
+            <td> <%= link_to "Slett", package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
+          </tr>
+          <% end %>
+          <tr class="table-primary">
+            <td class="text-center"> <%= link_to "Bestill", new_order_path, class: "btn btn-success btn-lg" %> </td>
+          </tr>
+        </table>
       </div>
-      <p class="text-center">Vi er stolte av å tilby eksklusive logopakker til landets mest rimelige priser.</p>
-      <br>
 
-      <div class="row">
-  <% @packages.each do |package| %>
-  <div class="col-md-4">
-<table class="table table-primary thead-dark table-borderless text-center" style="height:100%;">
-  <thead class="thead-dark">
-    <th style="font-size: 30px;"><b> <%= package.name %> </b></th>
-      <tr>
-    <th style="font-size: 30px;"> Totalt: <%= package.price %>,- </th>
-  </tr>
-  </thead>
-
-  <% package.products.each do |product| %>
-  <tr>
-    <td> <%= link_to "#{product.name}", product_path(product) %> </td>
-  </tr>
-  <% end %>
-  <% package.services.each do |service| %>
-  <tr>
-    <td><%= service.name %></td>
-  </tr>
-  <% end %>
-  <% if current_user && current_user.admin? %>
-  <tr>
-    <td><%= link_to "Endre", edit_package_path(package) %></td>
-  </tr>
-  <tr>
-    <td> <%= link_to "Slett", package, method: :delete, data: {confirm: "Er du sikker?"} %> </td>
-  </tr>
-  <% end %>
-  <tr class="table-primary">
-    <td class="text-center"> <%= link_to "Bestill", new_order_path, class: "btn btn-success btn-lg" %> </td>
-  </tr>
-
-</table>
-</div>
-
-<br><br>
-<% end %>
-</div>
-
-</div>
+    <br><br>
+    <% end %>
+    </div>
+  <!-- Ebd container  -->
+  </div>
 
  </section>
 
@@ -106,9 +105,11 @@
         </div>
         <div class="divider-custom-line"></div>
       </div>
-          <p class="text-center">Motta din logopakke på rekordtid i 3 enkle steg.</p>
+      <p class="text-center">Motta din logopakke på rekordtid i 3 enkle steg.</p>
       <br>
-<br><br>
+      <br>
+      <br>
+
       <div class="row text-center">
           <div class="col-md-4">
             <%= fa_icon "hand-o-up", style: "font-size: 100px;" %>
@@ -130,12 +131,9 @@
           </div>
         </p>
       </div>
-
-
-
-
-      </div>
-      </section>
+    <!-- End Container -->
+    </div>
+  </section>
 
 
   <!-- About Section -->
@@ -148,9 +146,9 @@
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <%= fa_icon "star" %>
-        </div>
+          <div class="divider-custom-icon">
+            <%= fa_icon "star" %>
+          </div>
         <div class="divider-custom-line"></div>
       </div>
 
@@ -192,7 +190,7 @@
           Last ned vår Logoguide!
         </a>
       </div>
-
+    <!-- End Container -->
     </div>
   </section>
 
@@ -200,28 +198,32 @@
   <section class="page-section portfolio" id="galleri", style="background-color:#F6F7F8">
     <div class="container">
       <% if current_user && current_user.admin? %>
-      <%= link_to "Endre Galleri", galleries_path, class: "btn btn-xl btn-primary" %>
+      <%= link_to "Hele Galleriet", admins_gallery_path, class: "btn btn-xl btn-primary" %>
+      <br>
       <% end %>
 
       <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Galleri</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Galleri</h2><br>
+      <p class="text-center">Her er noen av våre utvalgte prosjekter</p>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <%= fa_icon "star" %>
-        </div>
+          <div class="divider-custom-icon">
+            <%= fa_icon "star" %>
+          </div>
         <div class="divider-custom-line"></div>
       </div>
 
       <!-- Portfolio Grid Items -->
       <div class="row">
 
+      <% count = 0 %>
       <% @galleries.each do |gallery| %>
+      <% count += 1 %>
         <!-- Portfolio Item 1 -->
         <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal<%= count %> ">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
                 <%= fa_icon "plus" %>
@@ -234,7 +236,7 @@
 
       </div>
       <!-- /.row -->
-
+    <!-- End Container -->
     </div>
   </section>
   <!-- *********************** Slutt Galleri Seksjon *********************** -->
@@ -250,9 +252,9 @@
       <!-- Icon Divider -->
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <%= fa_icon "star" %>
-        </div>
+          <div class="divider-custom-icon">
+            <%= fa_icon "star" %>
+          </div>
         <div class="divider-custom-line"></div>
       </div>
 
@@ -261,7 +263,7 @@
       <!-- Contact Section Form -->
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+
           <div id="kontakt">
             <%= form_for :contact_mailer, :url => {action: "create", controller: "contact_mailers"} do |f|%>
             <div class="control-group">
@@ -270,7 +272,7 @@
             <div class="control-group">
               <%= f.text_field :last_name, class: "form-control form-control-inline", id: "name", placeholder: "Etternavn" %><br>
             </div>
-            </div>
+
             <div class="control-group">
               <%= f.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefon" %><br>
             </div>
@@ -285,8 +287,13 @@
 
             <% end %>
           </div>
+
         </div>
       </div>
+
+
+        <!-- container end -->
+    </div>
   </section>
 
 
@@ -313,8 +320,10 @@
         </button>
         <div class="modal-body text-center">
           <div class="container">
+
             <div class="row justify-content-center">
               <div class="col-lg-8">
+
                 <!-- Portfolio Modal - Title -->
                 <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"><%= gallery.header %></h2>
                 <!-- Icon Divider -->
@@ -326,13 +335,14 @@
                   <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
+                <%= cl_image_tag gallery.photo, height: 400, width: 600, class: "img-fluid-2 rounded mb-5" %>
                 <!-- Portfolio Modal - Text -->
                 <p class="mb-5"><%= gallery.description %></p>
                 <button class="btn btn-primary" href="#" data-dismiss="modal">
                   <%= fa_icon "times" %>
                   Lukk Vindu
                 </button>
+
               </div>
             </div>
           </div>

@@ -4,4 +4,7 @@ class GalleryPhotoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   include Cloudinary::CarrierWave
+
+  process eager: true
+
 end

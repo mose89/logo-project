@@ -12,6 +12,7 @@ class ContactMailersController < ApplicationController
 
     if @contact_mailer.save!
       KontaktMailer.kontakt_epost(@contact_mailer).deliver_now
+      KontaktMailer.kontakt_epost_detaljer(@contact_mailer).deliver_now
       redirect_to ny_takk_contact_mailer_path(@contact_mailer)
     else
       render new

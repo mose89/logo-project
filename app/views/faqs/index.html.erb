@@ -30,8 +30,8 @@
     <hr id=<%="q#{num_q2}"%> >
     <h2> <%= "#{num_q2}. #{faq.question}" %> </h2>
     <p> <%= faq.answer %> </p>
-    <%= link_to "Neste Spørsmål", "faqs/#q#{num_q2+1}"  %> <br>
-    <%= link_to "Forrige Spørsmål", "faqs/#q#{num_q2-1}"  %>
+    <%= link_to "Neste Spørsmål", "#q#{num_q2+1}"  %> <br>
+    <%= link_to "Forrige Spørsmål", "#q#{num_q2-1}"  %>
   <% end %>
 </div>
 
