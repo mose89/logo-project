@@ -49,6 +49,6 @@ class ApplicationPolicy
 
   private
   def is_admin?
-    user.admin ==true
+    user.admin == true
   end
 end
