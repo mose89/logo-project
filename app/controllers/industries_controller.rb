@@ -8,7 +8,7 @@ class IndustriesController < ApplicationController
 
   def create
     @industry = Industry.new(industry_params)
-    authorize @service
+    authorize @industry
 
     if @industry.save
       redirect_to(@industry)
