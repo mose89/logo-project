@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'kontakt@logomakern.no'
+  default from: '"LogoMaker\'n Support" <kontakt@logomakern.no>'
   layout 'mailer'
 end

@@ -49,116 +49,142 @@
 
 
     <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Velg logostilen du liker best</h4> <p>(Tips: Tenk på Hvilken følelse du vil at din målgruppe skal sitte igjen med)</p>
+        <table>
+          <div class="row">
 
-    <h4>Velg logostilen du liker best</h4> <p>(Tips: Tenk på Hvilken følelse du vil at din målgruppe skal sitte igjen med)</p>
-      <%= f.collection_radio_buttons(:style_id, Style.all, :id, :image) do |s| %>
-        <%= s.label { s.radio_button + cl_image_tag(s.object.image) } %>
-      <% end %>
+            <%= f.collection_radio_buttons(:style_id, Style.all, :id, :image) do |s| %>
+              <div class="col-md-4">
+                <table>
+                  <tr>
+                    <thead>
+                      <th style="text-align: center; font-size: 35px;">
+                        <%= s.object.name %>
+                      </th>
+                    </thead>
+                  </tr>
+                  <tr>
+                    <td><%= s.label {cl_image_tag(s.object.image, :width=>"200") } %></td>
+                  </tr>
+                  <tr>
+                    <td style='text-align: center;'><%= s.label { s.radio_button} %></td>
+                  </tr>
+                </table>
+              </div>
+            <% end %>
 
+          </div>
+        </table>
+      </div>
+    </div>
 
 
 <br><br>
 
-<h4>Velg et ekstraprodukt(Frivillig)</h4>
+<!-- Ekstra Produkt -->
+<!-- <h4>Velg et ekstraprodukt(Frivillig)</h4>
   <% @products.each do |product| %>
    <label>
-      <%= check_box_tag "order[product_ids][]", product.id, @order.products.include?(product.id) %>
-      <%= product.name %>
+      <% check_box_tag "order[product_ids][]", product.id, @order.products.include?(product.id) %>
+      <% product.name %>
    </label>
   <% end %>
-   <br />
+   <br /> -->
 
-<br>
-  <%= f.fields_for :company_detail do |builder| %>
+<!-- <br> -->
+    <div class="col-lg-8 mx-auto">
+      <%= f.fields_for :company_detail do |builder| %>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :fornavn %>
-          <%= builder.text_field :first_name, class: "form-control form-inline", id: "name", placeholder: "Fornavn" %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :fornavn %>
+              <%= builder.text_field :first_name, class: "form-control form-inline", id: "name", placeholder: "Fornavn" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :etternavn %>
+              <%= builder.text_field :last_name, class: "form-control form-inline", id: "name", placeholder: "Etternavn" %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :etternavn %>
-          <%= builder.text_field :last_name, class: "form-control form-inline", id: "name", placeholder: "Etternavn" %>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field">
+          <%= builder.label :telefon %>
+          <%= builder.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefonnummer" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+          <%= builder.label :epost %>
+          <%= builder.text_field :email, class: "form-control form-inline", id: "name", placeholder: "Epost" %>
+            </div>
+          </div>
         </div>
-      </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :selskapsnavn %>
+              <%= builder.text_field :business_name, class: "form-control form-inline", id: "name", placeholder: "Selskapsnavn(Valgfritt)" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :org_nummer %>
+              <%= builder.text_field :org_no, class: "form-control form-inline", id: "name", placeholder: "Organisasjonsnummer(Valgfritt)" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :adresse %>
+              <%= builder.text_field :address, class: "form-control form-inline", id: "name", placeholder: "Faktureringsadresse" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :postnummer %>
+              <%= builder.text_field :zip_code, class: "form-control form-inline", id: "name", placeholder: "Postnummer" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :etableringsår %>
+              <%= builder.text_field :established, class: "form-control form-inline", id: "name", placeholder: "Etableringsår" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <%= builder.label :hvordan_fikk_du_først_høre_om_oss? %>
+              <%= builder.text_field :referral, class: "form-control form-inline", id: "name", placeholder: "Google, Facebook, Twitter" %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+      <br>
+
+      <%= f.submit "Bestill", data: {confirm: "Dette er en endelig bestilling. Tast \"OK\" for å gå videre med bestillingen?"}, class: "btn btn-success btn-xl" %>
+      <% end %>
+
+      <br>
+      <br>
+      <br>
+
     </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field">
-      <%= builder.label :telefon %>
-      <%= builder.text_field :phone, class: "form-control form-inline", id: "name", placeholder: "Telefonnummer" %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field">
-      <%= builder.label :epost %>
-      <%= builder.text_field :email, class: "form-control form-inline", id: "name", placeholder: "Epost" %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :selskapsnavn %>
-          <%= builder.text_field :business_name, class: "form-control form-inline", id: "name", placeholder: "Selskapsnavn(Valgfritt)" %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :org_nummer %>
-          <%= builder.text_field :org_no, class: "form-control form-inline", id: "name", placeholder: "Organisasjonsnummer(Valgfritt)" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :adresse %>
-          <%= builder.text_field :address, class: "form-control form-inline", id: "name", placeholder: "Faktureringsadresse" %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :postnummer %>
-          <%= builder.text_field :zip_code, class: "form-control form-inline", id: "name", placeholder: "Postnummer" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :etableringsår %>
-          <%= builder.text_field :established, class: "form-control form-inline", id: "name", placeholder: "Etableringsår" %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field">
-          <%= builder.label :hvordan_fikk_du_først_høre_om_oss? %>
-          <%= builder.text_field :referral, class: "form-control form-inline", id: "name", placeholder: "Google, Facebook, Twitter" %>
-        </div>
-      </div>
-    </div>
-
-  <% end %>
-  <br>
-
-  <%= f.submit "Bestill", data: {confirm: "Dette er en endelig bestilling. Tast \"OK\" for å gå videre med bestillingen?"}, class: "btn btn-success btn-xl" %>
-  <% end %>
-
-  <br>
-  <br>
-  <br>
-
   </div>
 </div>
-
 
 

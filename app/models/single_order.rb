@@ -1,6 +1,6 @@
 class SingleOrder < ApplicationRecord
 
-  validates :design, presence: true
+  validates :design, presence: false
   validates :product, presence: true
 
 
