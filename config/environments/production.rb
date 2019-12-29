@@ -39,6 +39,19 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
+  config.action_mailer.default_url_options = {host: 'https://logo-project.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+  :address =>       'smtp.sendgrid.net', # default: localhost
+  :port =>           '587',                  # default: 25
+  :user_name =>      ENV['SENDGRID_USERNAME'],
+  :password =>       ENV['SENDGRID_PASSWORD'],
+  :domain =>         'heroku.com',
+  :authentication => :plain,              # :plain, :login or :cram_md5
+  :enable_starttls_auto => true
+  }
+
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 

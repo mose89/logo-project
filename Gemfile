@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem "google-api-client"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
+gem 'sendgrid-ruby'
+
 gem "chartkick", "~> 3.2.0"
 gem 'groupdate'
 
