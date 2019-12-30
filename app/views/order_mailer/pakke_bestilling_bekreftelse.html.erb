@@ -26,7 +26,7 @@
       <li><b>Adresse:</b> <%= @adresse %> </li>
       <li><b>Postnummer:</b> <%= @postnummer %> </li>
       <li> <b>Stil:</b> <br> <%= cl_image_tag(@stil.image,  :flags=>"attachment", :width=>"200") %> </li>
-      <li> <b>Egen Opplastet Logo:<br></b> <%= cl_image_tag(@referanse_stil,  :flags=>"attachment", :width=>"200") %></li>
+      <li> <b>Egen Opplastet Logo:<br></b> <%= cl_image_tag(Order.last.reference_logo,  :flags=>"attachment", :width=>"200") %></li>
     </ul>
 
     <br>

@@ -44,8 +44,12 @@
       </table>
 
 <h2>Foretrukket Stil</h2>
-<%= cl_image_tag @order.style.image %>
-
+<%= cl_image_tag(@order.style.image, :width => "200" %>
+<br>
+<% if @order.reference_logo != nil %>
+<h2>Egen opplastet logostil</h2>
+<%= cl_image_tag(@order.reference_logo, :width => "200" %>
+<% end %>
 <br><br>
 <!-- Content Row -->
           <div class="row">
