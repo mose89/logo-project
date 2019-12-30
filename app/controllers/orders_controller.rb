@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:logo_name, :slogan, :industry_id, :color, :style_id, :reference_logo, :package_id, :active, product_ids:[ ], company_detail_attributes:[:first_name, :last_name, :phone, :email, :business_name, :org_no, :address, :zip_code, :referral, :established])
+    params.require(:order).permit(:logo_name, :slogan, :industry_id, :color, :style_id, :reference_logo, :reference_logo_cache, :package_id, :active, product_ids:[ ], company_detail_attributes:[:first_name, :last_name, :phone, :email, :business_name, :org_no, :address, :zip_code, :referral, :established])
   end
 
   def set_order

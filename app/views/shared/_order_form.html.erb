@@ -46,6 +46,7 @@
     <br>
     <%= f.label "Last opp en logostil du liker (Frivillig)" %>
     <%= f.file_field :reference_logo, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
+    <%= f.hidden_field :reference_logo_cache, class: "form-control form-inline", id: "name", placeholder: "Referanse Logo" %>
 
 
     <br>
@@ -69,7 +70,7 @@
                     <td><%= s.label {cl_image_tag(s.object.image, :width=>"200") } %></td>
                   </tr>
                   <tr>
-                    <td style='text-align: center;'><%= s.label { s.radio_button} %></td>
+                    <td style='text-align: center;'><%= s.label {s.radio_button} %></td>
                   </tr>
                 </table>
               </div>

@@ -37,6 +37,8 @@ class OrderMailer < ApplicationMailer
     @pris = order.total
     @adresse = order.company_detail.address
     @postnummer = order.company_detail.zip_code
+    @stil = order.style
+    @referanse_stil = order.reference_logo
 
 
     mail(to: "logomakern@gmail.com", subject: 'Ny pakkebestilling er lagt inn på Logo Maker\'n')
@@ -53,6 +55,7 @@ class OrderMailer < ApplicationMailer
     @pris = order.total
     @adresse = order.company_detail.address
     @postnummer = order.company_detail.zip_code
+    @design = order.design
 
 
     mail(to: "logomakern@gmail.com", subject: 'Ny produktbestilling er lagt inn på Logo Maker\'n')

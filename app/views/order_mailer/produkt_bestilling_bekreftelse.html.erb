@@ -22,6 +22,7 @@
       <li><b>Telefon:</b> <%= @telefon %> </li>
       <li><b>Adresse:</b> <%= @adresse %> </li>
       <li><b>Postnummer:</b> <%= @postnummer %> </li>
+      <li><b>Design:</b> <%= cl_image_tag(@design.url, :attachment=>true, :width=>"200") %> </li>
     </ul>
 
     </p>

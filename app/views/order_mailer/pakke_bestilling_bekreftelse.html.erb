@@ -6,7 +6,8 @@
   <body>
     Følgende bestilling ble gjort <%= Time.now %>
 
-      <br><br>
+      <br>
+      <br>
       Følgende Pakke er blitt bestilt:
       <br>
 
@@ -24,9 +25,13 @@
       <li><b>Telefon:</b> <%= @telefon %> </li>
       <li><b>Adresse:</b> <%= @adresse %> </li>
       <li><b>Postnummer:</b> <%= @postnummer %> </li>
+      <li> <b>Stil:</b> <br> <%= cl_image_tag(@stil.image, :attachment=>true, :width=>"200") %> </li>
+      <li> <b>Egen Opplastet Logo:<br></b> <%= cl_image_tag(@referanse_stil, :attachment=>true, :width=>"200") %></li>
     </ul>
 
-    </p>
+    <br>
+    <br>
+
     <p>
       Med vennlig hilsen,<br>
       Logo Maker'n Support Team

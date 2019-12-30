@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
 
+  mount_uploader :reference_logo, OrderReferenceImageUploader
+
   validates :logo_name, presence: true
   validates :slogan, presence: true
   validates :industry, presence: true
