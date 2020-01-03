@@ -34,6 +34,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
+    set_meta_tags title: "Alle våre design tjenester",
+                  site: "LogoMaker'n",
+                  reverse: true
   end
 
   def destroy

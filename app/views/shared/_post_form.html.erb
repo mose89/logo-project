@@ -9,7 +9,7 @@
   <%= f.label :innlegg %> <br>
   <%= f.cktext_area :body %> <br>
 
-  <%= image_tag(@post.thumbnail) if @post.thumbnail? %>
+  <%= cl_image_tag(@post.thumbnail) if @post.thumbnail? %>
   <%= f.label :thumbnail %> <br>
   <%= f.file_field :thumbnail %>
   <%= f.hidden_field :thumbnail_cache %> <br><br>

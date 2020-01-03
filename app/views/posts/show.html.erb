@@ -1,17 +1,17 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-
-<div class="container" style="text-align: center;" >
+<br>
+<br>
+<br>
+<div class="container" style="text-align: left;" >
   <% if current_user && current_user.admin? %>
     <%= link_to "Endre Post", edit_post_path(@post) %>
   <% end %>
   <h1><%= @post.title %></h1>
   <br>
-  <p><%= cl_image_tag @post.thumbnail %></p>
+  <p><%= cl_image_tag(@post.thumbnail, :width => "600") %></p>
   <p><i> <%= raw(@post.preface) %></i></p>
 
   <br>
-  <p><%= raw(@post.body) %></p>
+  <p style="font-size: 20px;"><%= raw(@post.body) %></p>
   <br>
 
 
@@ -19,24 +19,26 @@
 <br>
 
 
+
+<h4> <%= @comments.count %> Kommentarer </h4> <%= link_to "Legg igjen en kommentar", new_post_comment_path(@post), class: "btn btn-lg btn-primary"%>
 <hr>
-<h4> <%= @comments.count %> Kommentarer </h4>
   <% @comments.each do |comment| %>
   <div class="row" >
     <div class="card" style="border: none;">
       <div class="card-body">
         <div class="card-title" style="text-align: left;"><b> <%= comment.name %> </b> </div>
-          <div class="card-text" style="text-align: left;"> <i ><%= comment.created_at.strftime("%d-%b 20%y") %></i></div>
+          <div class="card-text" style="text-align: left; font-size: 11px; "><%= "Skrevet: " + comment.created_at.strftime("%d-%b-20%y") %></div>
           <br>
           <p> <%= comment.body %> </p>
 
       </div>
     </div>
   </div>
-  <br>
   <hr>
   <% end %>
 
-  <br>
-<%= link_to "Legg igjen en Kommentar", new_post_comment_path(@post), class: "btn btn-lg btn-primary"%>
 </div>
+<br>
+<br>
+<br>
+<br>

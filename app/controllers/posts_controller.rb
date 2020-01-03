@@ -29,10 +29,16 @@ class PostsController < ApplicationController
   end
 
   def show
+    set_meta_tags title: @post.title,
+                  site: "LogoMaker'n",
+                  reverse: true
   end
 
   def index
     @posts = policy_scope(Post).paginate(page: params[:page], per_page: 3)
+    set_meta_tags title: "Den ultimate design guiden",
+                  site: "LogoMaker'n",
+                  reverse: true
   end
 
   def destroy

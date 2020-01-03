@@ -25,7 +25,11 @@
           </tr>
         </tbody>
       </table>
-
+<br>
+<% if @single_order.design != nil %>
+  <b>Design:</b>
+  <%= cl_image_tag(@single_order.design, :width => "200") %>
+<% end %>
 <br><br>
 <!-- Content Row -->
           <div class="row">

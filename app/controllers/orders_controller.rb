@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
     @order = Order.new
     authorize @order
     @order.build_company_detail
+    set_meta_tags title: "Designerpakke Bestillingsside",
+                  site: "LogoMaker'n",
+                  reverse: true
   end
 
   def create

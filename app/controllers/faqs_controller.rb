@@ -37,6 +37,9 @@ class FaqsController < ApplicationController
 
   def index
     @faqs = policy_scope(Faq)
+    set_meta_tags title: "Svar på ofte stilte spørsmål",
+                  site: "LogoMaker'n",
+                  reverse: true
   end
 
   def destroy

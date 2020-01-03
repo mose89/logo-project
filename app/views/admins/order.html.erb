@@ -115,11 +115,12 @@
                           <td><%= "#{order.company_detail.first_name} i #{order.company_detail.business_name}" %></td>
                           <td><%= "#{order.total} NOK" %></td>
                           <td>
-                            <%= form_for order, :url => single_order_path(order.id), :html => { :method => :put } do |f| %>
+                            <%= form_for order, :url => single_order_path(order.id), :html => { :method => :patch } do |f| %>
                               <%= f.hidden_field :active, value: false %>
                               <%= f.submit 'Deaktiver', class: "btn btn-sm btn-primary" %>
                             <% end %>
                           </td>
+                          <td><%= link_to "Flere Detaljer", single_order_path(order), class: "btn btn-sm btn-primary" %></td>
                         </tr>
                         <% end %>
                       </tbody>

@@ -54,6 +54,9 @@ class PackagesController < ApplicationController
   def index
     @packages = policy_scope(Package)
     @galleries = Gallery.all
+    set_meta_tags title: "Logo Design & Grafiske Tjenester|Høy Kvalitet|Gode Priser",
+                  site: "LogoMaker'n",
+                  keywords: ["logo design", "Visitkort", "Favicon", "Vektor filer"]
   end
 
   def destroy
