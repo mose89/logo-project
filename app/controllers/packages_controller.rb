@@ -14,11 +14,6 @@ class PackagesController < ApplicationController
     @package = Package.new(package_params)
     authorize @package
 
-    prod_ids = params[:package][:product_ids]
-    prod_ids.each do |prod_id|
-      @package.products << Product.find(prod_id.to_i)
-    end
-
     serv_ids = params[:package][:service_ids]
     if serv_ids.length > 1
       serv_ids.each do |serv_id|
@@ -39,7 +34,7 @@ class PackagesController < ApplicationController
   end
 
   def update
-    params[:package][:product_ids] ||=[]
+    # params[:package][:product_ids] ||=[]
     params[:package][:service_ids] ||=[]
     if @package.update_attributes(edit_package_params)
       redirect_to(@package)

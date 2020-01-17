@@ -15,7 +15,7 @@ class KontaktMailer < ApplicationMailer
     @telefon = melding.phone
     @melding = melding.message
     @epost = melding.email
-    mail(to: @epost, subject: 'Logo Maker\'n - Ny Melding')
+    mail(to: "logomakern@gmail.com", subject: 'Logo Maker\'n - Ny Melding')
   end
 
 end

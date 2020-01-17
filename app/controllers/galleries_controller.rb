@@ -38,7 +38,7 @@ before_action :find_gallery, only: [:show, :edit, :update, :destroy]
 
   private
   def gallery_params
-    params.require(:gallery).permit(:header, :description, :photo, :photo_cached)
+    params.require(:gallery).permit(:header, :description, :photo, :photo_cache)
   end
 
   def find_gallery
