@@ -20,7 +20,7 @@
           <h4 class="card-title"><%= product.name.capitalize %></h4>
           <p class="card-text">
            <%= product.description %> </p>
-          <p class="card-text"> <%= product.price %> NOK </p>
+          <p class="card-text"> <%= product.price.to_i %> NOK </p>
           <p class="card-text"> <%= link_to "Detaljer", product, class: "btn btn-primary btn-lg" %> </p>
           <% if current_user && current_user.admin? %>
             <p class="card-text"><%= link_to "Endre", edit_product_path(product), class: "btn btn-warning btn-lg" %> </p>

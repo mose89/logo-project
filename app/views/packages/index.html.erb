@@ -58,7 +58,7 @@
           <thead class="thead-dark">
             <th style="font-size: 30px;"><b> <%= package.name %> </b></th>
             <tr>
-              <th style="font-size: 30px;"> Totalt: <%= package.price %>,- </th>
+              <th style="font-size: 30px;"> Totalt: <%= package.price.to_i %>,- NOK </th>
             </tr>
           </thead>
           <% package.services.each do |service| %>
