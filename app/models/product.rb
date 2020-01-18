@@ -1,9 +1,9 @@
 class Product < ApplicationRecord
 
   validates :name, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
   validates :price, presence: true
-  validates :photo, presence: true
+  # validates :photo, presence: true
 
   has_many :package_products
   has_many :packages, :through => :package_products
