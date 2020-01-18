@@ -67,7 +67,7 @@
           </tr>
           <% end %>
           <% empty = Service.all.count - package.services.count %>
-          <% for i in 1..empty %>
+          <% for i in 1...empty %>
             <tr>
               <td style="color:#117964;"></td>
             </tr>
