@@ -6,7 +6,7 @@
       <%image_tag "avataaars", class: "masthead-avatar mb-5" %>
 
       <!-- Masthead Heading -->
-      <h1 class="masthead-heading text-uppercase mb-0" style="font-size:45px;"> Vi Designer Logo, visitkort og brevhoder</h1>
+      <h1 class="masthead-heading text-uppercase mb-0" style="font-size:45px;"> Vi Designer Logo, visittkort og brevhoder</h1>
       <br>
       <p class="masthead-subheading font-weight-light mb-0" style="text-align: left;">...som skiller seg ut og gir varige inntrykk</p>
       <!-- Icon Divider -->
@@ -61,16 +61,16 @@
               <th style="font-size: 30px;"> Totalt: <%= package.price %>,- </th>
             </tr>
           </thead>
-
-          <% package.products.each do |product| %>
-          <tr>
-            <td> <%= link_to "#{product.name}", product_path(product), target: "_blank" %> </td>
-          </tr>
-          <% end %>
           <% package.services.each do |service| %>
           <tr>
             <td style="color:#117964;"><%= service.name %></td>
           </tr>
+          <% end %>
+          <% empty = Service.all.count - package.services.count %>
+          <% for i in 1..empty %>
+            <tr>
+              <td style="color:#117964;"></td>
+            </tr>
           <% end %>
           <% if current_user && current_user.admin? %>
           <tr>
