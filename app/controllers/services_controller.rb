@@ -20,7 +20,7 @@ class ServicesController < ApplicationController
   end
 
   def update
-    if @service.update_params(service_params)
+    if @service.update(service_params)
       redirect_to(@service)
     else
       render edit
