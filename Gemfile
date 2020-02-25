@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', ">= 3.12.2"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,10 +35,10 @@ gem 'meta-tags'
 
 gem 'sendgrid-ruby'
 
-gem "chartkick", "~> 3.2.0"
+gem "chartkick", ">= 3.3.0"
 gem 'groupdate'
 
-gem "devise", "~> 4.6.0"
+gem "devise", ">= 4.7.1"
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
