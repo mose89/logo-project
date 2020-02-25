@@ -4,9 +4,10 @@
       <!-- Masthead Heading -->
 
       <h1><%= @product.name %> </h1><br>
-      <h4><b>Produktbeskrivelse:</b></h4>
+      <h3>Produktbeskrivelse: </h3>
       <p style="font-size: 18px;"><%= @product.description %></p>
-      <h4> Pris: <%= (@product.price).to_i %>,- </h4>
+      </br>
+      <h3> Pris: <%= (@product.price).to_i %>,- </h3>
       <% if current_user && current_user.admin? %>
         <div class="row">
 
