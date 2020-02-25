@@ -3,8 +3,8 @@
 
       <!-- Masthead Heading -->
 
-      <h1><%= @product.name %></h1>
-      <h2>Pris: <%= @product.price %>,-</h2><br>
+      <h1><%= @product.name %> - <% (@product.price).to_i %></h1>
+      <h2>Pris: <% @product.price %>,-</h2><br>
       <p><b>Produktbeskrivelse</b></p><br>
       <p><%= @product.description %></p>
       <% if current_user && current_user.admin? %>
