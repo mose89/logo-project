@@ -19,7 +19,7 @@
         <div class="card-body" style="text-align: center;">
           <h4 class="card-title"><%= product.name.capitalize %></h4>
           <p class="card-text">
-           <%= product.description %> </p>
+           <% product.description %> </p>
           <p class="card-text"> <%= product.price.to_i %> NOK </p>
           <p class="card-text"> <%= link_to "Detaljer", product, class: "btn btn-primary btn-lg" %> </p>
           <% if current_user && current_user.admin? %>
